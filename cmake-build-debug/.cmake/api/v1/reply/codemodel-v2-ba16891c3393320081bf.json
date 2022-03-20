@@ -1,0 +1,87 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TP_project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TP_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP_project-Debug-0948f282ad4380c7e88e.json",
+					"name" : "TP_project",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lib_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lib_c-Debug-1b052142072a51d3523a.json",
+					"name" : "lib_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lib_ptg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lib_ptg-Debug-1aaa5874c5ff77916159.json",
+					"name" : "lib_ptg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "lib_st::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-lib_st-Debug-8e3407ccaf89961f75b9.json",
+					"name" : "lib_st",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug",
+		"source" : "/home/ilya/MIPT/C++/CLionProjects/TP-project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

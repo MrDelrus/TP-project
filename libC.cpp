@@ -1,7 +1,7 @@
 #include <string>
 #include <vector>
-#include "StudentTutorGroup.h"
-#include "ProblemTask.h"
+#include "libPTG.cpp"
+#include "libST.cpp"
  
 class Chat {
 private:

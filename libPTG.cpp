@@ -1,8 +1,9 @@
 #include <string>
 #include <vector>
-#include "StudentTutorGroup.h"
-#include "Chat.h"
+#include "libC.cpp"
+#include "libST.cpp"
 #include <set>
+#include <map>
  
 class Problem {
 private:
@@ -29,7 +30,7 @@ private:
     Tutor tutor;
     Problem data;
     std::set<Student*> students;
-    std::map<Student*, Chat*> discusses;
+    std::map<Student*, Chat*> discussed;
 public:
     Task(Tutor tutor, const Problem& problem, const std::set<Student*>& students = std::set<Student*>()): data(problem), students(students) {
         for (auto s: students) {
@@ -45,12 +46,12 @@ public:
  
     void AddStudent(const Student* student) {
         students.insert(student);
-        discusses[student] = Chat(std::set<Person*>(tutor, student));
+        discussed[student] = new Chat(std::set<Person*>(tutor, student));
     }
  
     void EraseStudent(const Student* student) {
         students.erase(student);
-        discusses.erase(student);
+        discussed.erase(student);
     }
  
     Chat* GetChat(Student* student) {

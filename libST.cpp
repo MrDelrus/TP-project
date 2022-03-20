@@ -1,6 +1,6 @@
 #include <string>
-#include "ProblemTask.h"
-#include "Chat.h"
+#include "libPTG.cpp"
+#include "libC.cpp"
  
 class Person {
 private:

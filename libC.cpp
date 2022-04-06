@@ -1,11 +1,12 @@
+#pragma once
 #include <string>
 #include <vector>
-#include "libPTG.cpp"
 #include "libST.cpp"
+#include <set>
  
 class Chat {
 private:
-    struct Message {
+    struct Message { //add time?
         Person messaging_person;
         std::string text;
         Message(const std::string& text_constr, const Person& person) {
@@ -19,8 +20,8 @@ private:
 //    std::fstream chat_file;
 public:
     std::string chat_name;
-    std::vector<Person*> people_in_chat;
-    explicit Chat(const std::string& chat_name_const, const std::set<Person*>& people_in_chat_constr) {
+    std::set<Person*> people_in_chat;
+    Chat(const std::string& chat_name_const, const std::set<Person*>& people_in_chat_constr) {
         chat_name = chat_name_const;
         messages = std::vector<Message>();
         people_in_chat = people_in_chat_constr;
@@ -35,10 +36,26 @@ public:
     const Message& Get_Message(int number) const {
         return messages[number];
     }
+    std::string Get_Last_n_Messages(int number) const {
+        std::string ans = "";
+        if (number > messages.size()) {
+            for (const auto & message : messages) {
+                ans += message.messaging_person.GetName() + ": " + message.text + "\n\n";
+            }
+            return ans;
+        }
+        if (number < 0) {
+            return ans;
+        }
+        for (int i = messages.size() - number; i < messages.size(); ++i) {
+            ans += messages[i].messaging_person.GetName() + ": " + messages[i].text + "\n\n";
+        }
+        return ans;
+    }
     std::string Get_All_Chat() {
         std::string ans = "";
-        for (int i = 0; i < messages.size(); ++i) {
-            ans += messages[i].messaging_person.Name + ": " + messages[i].text + "\n\n";
+        for (auto & message : messages) {
+            ans += message.messaging_person.GetName() + ": " + message.text + "\n\n";
         }
         return ans;
     }

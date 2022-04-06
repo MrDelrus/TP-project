@@ -1,4 +1,6 @@
+#pragma once
 #include <string>
+#include <utility>
 #include <vector>
 #include "libC.cpp"
 #include "libST.cpp"
@@ -11,7 +13,7 @@ private:
     std::string name;
     std::string data;
 public:
-    Problem(Tutor* tutor, std::string n, const std::string& t): tutor(tutor), name(std::move(n)), data(t) {}
+    Problem(Tutor* tutor, std::string n, std::string  t): tutor(tutor), name(std::move(n)), data(std::move(t)) {}
     Problem(const Problem&) = default;
     ~Problem() = default;
  
@@ -27,14 +29,17 @@ public:
  
 class Task {
 private:
-    Tutor tutor;
+    std::string name;
+    Tutor* tutor;
     Problem data;
     std::set<Student*> students;
-    std::map<Student*, Chat*> discussed;
+    std::map<Student*, Chat*> personal_discussions;
 public:
-    Task(Tutor tutor, const Problem& problem, const std::set<Student*>& students = std::set<Student*>()): data(problem), students(students) {
+    Task(std::string name, Tutor* tutor_constr, const Problem& problem, const std::set<Student*>& students = std::set<Student*>()):
+    name(name), data(problem), students(students) {
         for (auto s: students) {
-            discussed[s] = Chat(std::set<Person*>(tutor, s));
+            std::string name = tutor->GetName() + " " + s->GetName();
+            personal_discussions[s] = new Chat(name, std::set<Person*>({tutor, s}));
         }
     }
     Task(const Task&) = default;
@@ -44,22 +49,23 @@ public:
         return students;
     }
  
-    void AddStudent(const Student* student) {
+    void AddStudent(Student* student) {
         students.insert(student);
-        discussed[student] = new Chat(std::set<Person*>(tutor, student));
+        std::string chat_name = tutor->GetName() + " " + student->GetName();
+        personal_discussions[student] = new Chat(chat_name, std::set<Person*>({tutor, student}));
     }
  
-    void EraseStudent(const Student* student) {
+    void EraseStudent(Student* student) {
         students.erase(student);
-        discussed.erase(student);
+        personal_discussions.erase(student);
     }
  
     Chat* GetChat(Student* student) {
-        return discussed[student];
+        return personal_discussions[student];
     }
  
     bool operator < (const Task& to_compare) const {
-        return Name < to_compare.Name;
+        return name < to_compare.name;
     }
 };
  
@@ -70,26 +76,32 @@ private:
     std::set<Task*> tasks;
     std::string table;
     std::string name;
+    int id;
 public:
  
-    Group(Tutor* tutor, std::set<Student*> students = std::set<Student*>(), const std::string& name) : tutor(tutor), students(students), name(name) {}
+    Group(Tutor* tutor, const std::string& name, int id_constr, std::set<Student*> students = std::set<Student*>()) :
+    tutor(tutor), students(students), name(name), id(id_constr) {}
     Group(const Group&) = default;
     ~Group() = default;
  
-    std::string GetName() {
+    [[nodiscard]] const std::string GetName() const {
         return name;
     }
- 
+
+    [[nodiscard]] const int GetId() const {
+        return id;
+    }
+
     std::set<Student*> GetStudents() {
         return students;
     }
  
     std::string GetLink() {
-        //frontend
+        //frontend?
     }
  
-    void AddTask(const Task& task) {
-        tasks.insert(*task);
+    void AddTask(Task& task) {
+        tasks.insert(&task);
     }
  
     std::set<Task*> GetTasks() {

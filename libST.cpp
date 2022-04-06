@@ -1,29 +1,26 @@
+#pragma once
 #include <string>
-#include "libPTG.cpp"
-#include "libC.cpp"
- 
+#include <set>
+#include <iostream>
+#include <utility>
+
 class Person {
 private:
     std::string name;
-    std::set<Group*> groups;
+    std::set<int> groups_id;
 public:
- 
-    std::set<Group*> GetGroups() {
-        return groups;
+    std::set<int> GetGroupsIds() {
+        return groups_id;
     }
- 
-    Group* ChooseGroup(std::string group_name) {
-        for (auto g: groups) {
-            if (group_name == g->GetName()) {
-                return g;
-            }
-        }
-    }
- 
-    std::string GetName() {
+
+//    int ChooseGroup(const std::string& group_name, std::map<std::string, Group*>& groups) const {
+//        return groups[group_name]->GetId();
+//    }
+
+    [[nodiscard]] std::string GetName() const {
         return name;
     }
- 
+
     bool operator < (const Person& person) const {
         return (name < person.name);
     }
@@ -33,7 +30,7 @@ class Tutor : public Person {
 private:
     std::string name;
 public:
-    Tutor(const std::string& name): name(name) {}
+    explicit Tutor(std::string  name): name(std::move(name)) {}
     Tutor(const Tutor&) = default;
     ~Tutor() = default;
 };
@@ -42,7 +39,7 @@ class Student : public Person {
 private:
     std::string name;
 public:
-    Student(const std::string& name): name(name) {}
+    explicit Student(std::string  name): name(std::move(name)) {}
     Student(const Student&) = default;
     ~Student() = default;
 };

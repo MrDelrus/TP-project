@@ -1,6 +1,7 @@
 /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/TP_project.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/lib_ptg.dir
-/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/lib_c.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/TP_project.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/lib_st.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/in_out.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/CMakeFiles/lib_c.dir

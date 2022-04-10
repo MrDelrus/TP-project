@@ -1,6 +1,6 @@
 #include "libs.h"
 
-class Person {
+class Person_Inner {
 private:
     std::string name;
     std::string password;

@@ -1,0 +1,1 @@
+/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,liblib_ptg.so -o liblib_ptg.so CMakeFiles/lib_ptg.dir/libPTG.cpp.o 

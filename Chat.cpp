@@ -1,4 +1,13 @@
-#include "libs.h"
+#include <vector>
+#include <set>
+#include <string>
+#include <map>
+
+using std::vector;
+using std::set;
+using std::map;
+using std::string;
+using std::pair;
 
 class Chat {
 private:

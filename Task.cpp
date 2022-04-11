@@ -1,4 +1,4 @@
-#include "libs.h"
+#pragma once
 #include "Chat.cpp"
 
 class Task {

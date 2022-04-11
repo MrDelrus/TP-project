@@ -33,6 +33,7 @@ public:
     Person(const Person& to_copy);
     Person(string name_c, string pass_c, type type_c, map<string, long long> to_copy);
     std::vector<std::string> get_names_of_groups();
+    type get_role();
     string get_name();
     const map<string, long long>& get_map_name_id();
 //    friend Profile_menu;
@@ -50,6 +51,7 @@ private:
     std::map <std::string, Task> tasks;
 public:
     string get_name() { return name; }
+    Group() = default;
     Group(long long id, std::string name, std::string tutor_name,
           std::vector <std::string> students_names) :
             id(id), name(std::move(name)), tutor_name(std::move(tutor_name)), students_names(std::move(students_names)) {}

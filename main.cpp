@@ -39,6 +39,6 @@ int main() {
     int b = X::left;
     int c = x.left;
     int d = p->left;
-hii
+    std::cout << "hello!";
     return 0;
 }

@@ -1,10 +1,10 @@
 #include "libs.h"
-
-class Student_menu: Profile_menu {
-private:
-    std::string
-
-public:
+//
+//class Student_menu: Profile_menu {
+//private:
+//    std::string
+//
+//public:
     /* Student_menu(Profile_menu) {
 
     }; */
@@ -15,4 +15,4 @@ public:
         }
     } */
 
-};
+// };

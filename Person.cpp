@@ -11,7 +11,7 @@ Person::Person(const Person& to_copy) {
     name = to_copy.name;
     password = to_copy.password;
     role = to_copy.role;
-    name_to_id_of_groups == to_copy.name_to_id_of_groups;
+    name_to_id_of_groups = to_copy.name_to_id_of_groups;
 }
 
 Person::Person(string name_c, string pass_c, type type_c, map<string, long long> to_copy) {
@@ -19,6 +19,10 @@ Person::Person(string name_c, string pass_c, type type_c, map<string, long long>
     password = std::move(pass_c);
     role = type_c;
     name_to_id_of_groups = std::move(to_copy);
+}
+
+type Person::get_role() {
+    return role;
 }
 
 string Person::get_name() {

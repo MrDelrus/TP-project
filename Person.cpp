@@ -1,22 +1,23 @@
 #include "libs.h"
 
-class Person {
-private:
-    std::string name;
-    std::string password;
-    type role;
-    std::map<std::string, long long> name_to_id_of_groups;
-public:
-    Person(type )
-    std::vector<long long> get_names_of_groups() {
-        std::vector <std::string> names_of_groups;
-        for (auto p: id_and_name_of_groups) {
-            names_of_groups.push_back(p.second);
-        }
-        return names_of_groups;
-    }
+Person::Person() {
+    name = "";
+    password = "ghdjkdsghkfjdh";
+    role = student;
+    name_to_id_of_groups = map<string, long long>();
+}
 
-    friend Profile_menu;
-    friend Student_menu;
-    friend Tutor_menu;
-};
+Person::Person(string name_c, string pass_c, type type_c, map<string, long long> to_copy) {
+    name = std::move(name_c);
+    password = std::move(pass_c);
+    role = type_c;
+    name_to_id_of_groups = std::move(to_copy);
+}
+
+std::vector<std::string> Person::get_names_of_groups() {
+    std::vector <std::string> names_of_groups;
+    for (const auto& p: name_to_id_of_groups) {
+        names_of_groups.push_back(p.first);
+    }
+    return names_of_groups;
+}

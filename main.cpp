@@ -39,6 +39,6 @@ int main() {
     int b = X::left;
     int c = x.left;
     int d = p->left;
-
+hii
     return 0;
 }

@@ -1,2 +1,6 @@
 # ninja log v5
-0	16	1647800375393616387	CMakeFiles/TP_project.dir/main.cpp.o	a64bdbbd3e06657f
+44	255	1649691521913600170	libtutor_menu_lib.so	651a02cec740a7e
+35	124	1649691345977799607	libchat_lib.so	f830a89f505ff98a
+0	83	1649691507165616165	libmain_header.so	f21e1f4b9ec621f4
+1	44	1649691521705600395	CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o	63876edb2f086b1d
+0	35	1649691345889799713	CMakeFiles/chat_lib.dir/Chat.cpp.o	1a101eca50b19342

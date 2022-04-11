@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,liblib_c.so -o liblib_c.so CMakeFiles/lib_c.dir/Chat.cpp.o 

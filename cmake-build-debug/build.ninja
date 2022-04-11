@@ -11,7 +11,7 @@
 # =============================================================================
 
 # =============================================================================
-# Project: TP_project
+# Project: TP_2_sem_project
 # Configurations: Debug
 # =============================================================================
 
@@ -39,13 +39,13 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug/
+cmake_ninja_workdir = /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/
 
 #############################################
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug && /snap/clion/184/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/ilya/MIPT/C++/CLionProjects/TP-project -B/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug
+  COMMAND = cd /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug && /snap/clion/184/bin/cmake/linux/bin/cmake --regenerate-during-build -S/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project -B/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -57,154 +57,363 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug && /snap/clion/184/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+  COMMAND = cd /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug && /snap/clion/184/bin/cmake/linux/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
   DESC = No interactive CMake dialog available...
   restat = 1
 
 build edit_cache: phony CMakeFiles/edit_cache.util
 
 # =============================================================================
-# Object build statements for EXECUTABLE target TP_project
+# Object build statements for SHARED_LIBRARY target group_lib
 
 
 #############################################
-# Order-only phony target for TP_project
+# Order-only phony target for group_lib
 
-build cmake_object_order_depends_target_TP_project: phony || cmake_object_order_depends_target_lib_c cmake_object_order_depends_target_lib_ptg cmake_object_order_depends_target_lib_st
+build cmake_object_order_depends_target_group_lib: phony || CMakeFiles/group_lib.dir
 
-build CMakeFiles/TP_project.dir/main.cpp.o: CXX_COMPILER__TP_project_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/main.cpp || cmake_object_order_depends_target_TP_project
-  DEP_FILE = CMakeFiles/TP_project.dir/main.cpp.o.d
+build CMakeFiles/group_lib.dir/Group.cpp.o: CXX_COMPILER__group_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Group.cpp || cmake_object_order_depends_target_group_lib
+  DEFINES = -Dgroup_lib_EXPORTS
+  DEP_FILE = CMakeFiles/group_lib.dir/Group.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/group_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/group_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target group_lib
+
+
+#############################################
+# Link the shared library libgroup_lib.so
+
+build libgroup_lib.so: CXX_SHARED_LIBRARY_LINKER__group_lib_Debug CMakeFiles/group_lib.dir/Group.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/group_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libgroup_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libgroup_lib.so
+  TARGET_PDB = group_lib.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target chat_lib
+
+
+#############################################
+# Order-only phony target for chat_lib
+
+build cmake_object_order_depends_target_chat_lib: phony || CMakeFiles/chat_lib.dir
+
+build CMakeFiles/chat_lib.dir/Chat.cpp.o: CXX_COMPILER__chat_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Chat.cpp || cmake_object_order_depends_target_chat_lib
+  DEFINES = -Dchat_lib_EXPORTS
+  DEP_FILE = CMakeFiles/chat_lib.dir/Chat.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/chat_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/chat_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target chat_lib
+
+
+#############################################
+# Link the shared library libchat_lib.so
+
+build libchat_lib.so: CXX_SHARED_LIBRARY_LINKER__chat_lib_Debug CMakeFiles/chat_lib.dir/Chat.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/chat_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libchat_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libchat_lib.so
+  TARGET_PDB = chat_lib.so.dbg
+
+# =============================================================================
+# Object build statements for EXECUTABLE target TP_2_sem_project
+
+
+#############################################
+# Order-only phony target for TP_2_sem_project
+
+build cmake_object_order_depends_target_TP_2_sem_project: phony || cmake_object_order_depends_target_chat_lib cmake_object_order_depends_target_group_lib cmake_object_order_depends_target_main_header cmake_object_order_depends_target_main_menu_lib cmake_object_order_depends_target_person_lib cmake_object_order_depends_target_profile_menu_lib cmake_object_order_depends_target_student_menu_lib cmake_object_order_depends_target_task_lib cmake_object_order_depends_target_tutor_menu_lib
+
+build CMakeFiles/TP_2_sem_project.dir/main.cpp.o: CXX_COMPILER__TP_2_sem_project_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/main.cpp || cmake_object_order_depends_target_TP_2_sem_project
+  DEP_FILE = CMakeFiles/TP_2_sem_project.dir/main.cpp.o.d
   FLAGS = -g -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/TP_project.dir
-  OBJECT_FILE_DIR = CMakeFiles/TP_project.dir
+  OBJECT_DIR = CMakeFiles/TP_2_sem_project.dir
+  OBJECT_FILE_DIR = CMakeFiles/TP_2_sem_project.dir
 
 
 # =============================================================================
-# Link build statements for EXECUTABLE target TP_project
+# Link build statements for EXECUTABLE target TP_2_sem_project
 
 
 #############################################
-# Link the executable TP_project
+# Link the executable TP_2_sem_project
 
-build TP_project: CXX_EXECUTABLE_LINKER__TP_project_Debug CMakeFiles/TP_project.dir/main.cpp.o | liblib_c.so liblib_st.so liblib_ptg.so || liblib_c.so liblib_ptg.so liblib_st.so
+build TP_2_sem_project: CXX_EXECUTABLE_LINKER__TP_2_sem_project_Debug CMakeFiles/TP_2_sem_project.dir/main.cpp.o | libmain_header.so libchat_lib.so libgroup_lib.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so || libchat_lib.so libgroup_lib.so libmain_header.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug  liblib_c.so  liblib_st.so  liblib_ptg.so
-  OBJECT_DIR = CMakeFiles/TP_project.dir
+  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug  libmain_header.so  libchat_lib.so  libgroup_lib.so  libmain_menu_lib.so  libperson_lib.so  libprofile_menu_lib.so  libstudent_menu_lib.so  libtask_lib.so  libtutor_menu_lib.so
+  OBJECT_DIR = CMakeFiles/TP_2_sem_project.dir
   POST_BUILD = :
   PRE_LINK = :
-  TARGET_FILE = TP_project
-  TARGET_PDB = TP_project.dbg
+  TARGET_FILE = TP_2_sem_project
+  TARGET_PDB = TP_2_sem_project.dbg
 
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target lib_ptg
+# Object build statements for SHARED_LIBRARY target profile_menu_lib
 
 
 #############################################
-# Order-only phony target for lib_ptg
+# Order-only phony target for profile_menu_lib
 
-build cmake_object_order_depends_target_lib_ptg: phony || CMakeFiles/lib_ptg.dir
+build cmake_object_order_depends_target_profile_menu_lib: phony || CMakeFiles/profile_menu_lib.dir
 
-build CMakeFiles/lib_ptg.dir/libPTG.cpp.o: CXX_COMPILER__lib_ptg_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/libPTG.cpp || cmake_object_order_depends_target_lib_ptg
-  DEFINES = -Dlib_ptg_EXPORTS
-  DEP_FILE = CMakeFiles/lib_ptg.dir/libPTG.cpp.o.d
+build CMakeFiles/profile_menu_lib.dir/Profile_menu.cpp.o: CXX_COMPILER__profile_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Profile_menu.cpp || cmake_object_order_depends_target_profile_menu_lib
+  DEFINES = -Dprofile_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/profile_menu_lib.dir/Profile_menu.cpp.o.d
   FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/lib_ptg.dir
-  OBJECT_FILE_DIR = CMakeFiles/lib_ptg.dir
+  OBJECT_DIR = CMakeFiles/profile_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/profile_menu_lib.dir
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target lib_ptg
+# Link build statements for SHARED_LIBRARY target profile_menu_lib
 
 
 #############################################
-# Link the shared library liblib_ptg.so
+# Link the shared library libprofile_menu_lib.so
 
-build liblib_ptg.so: CXX_SHARED_LIBRARY_LINKER__lib_ptg_Debug CMakeFiles/lib_ptg.dir/libPTG.cpp.o
+build libprofile_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__profile_menu_lib_Debug CMakeFiles/profile_menu_lib.dir/Profile_menu.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/lib_ptg.dir
+  OBJECT_DIR = CMakeFiles/profile_menu_lib.dir
   POST_BUILD = :
   PRE_LINK = :
-  SONAME = liblib_ptg.so
+  SONAME = libprofile_menu_lib.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = liblib_ptg.so
-  TARGET_PDB = lib_ptg.so.dbg
+  TARGET_FILE = libprofile_menu_lib.so
+  TARGET_PDB = profile_menu_lib.so.dbg
 
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target lib_c
+# Object build statements for SHARED_LIBRARY target main_header
 
 
 #############################################
-# Order-only phony target for lib_c
+# Order-only phony target for main_header
 
-build cmake_object_order_depends_target_lib_c: phony || CMakeFiles/lib_c.dir
+build cmake_object_order_depends_target_main_header: phony || CMakeFiles/main_header.dir
 
-build CMakeFiles/lib_c.dir/libC.cpp.o: CXX_COMPILER__lib_c_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/libC.cpp || cmake_object_order_depends_target_lib_c
-  DEFINES = -Dlib_c_EXPORTS
-  DEP_FILE = CMakeFiles/lib_c.dir/libC.cpp.o.d
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target main_header
+
+
+#############################################
+# Link the shared library libmain_header.so
+
+build libmain_header.so: CXX_SHARED_LIBRARY_LINKER__main_header_Debug
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/main_header.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libmain_header.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libmain_header.so
+  TARGET_PDB = main_header.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target task_lib
+
+
+#############################################
+# Order-only phony target for task_lib
+
+build cmake_object_order_depends_target_task_lib: phony || CMakeFiles/task_lib.dir
+
+build CMakeFiles/task_lib.dir/Task.cpp.o: CXX_COMPILER__task_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Task.cpp || cmake_object_order_depends_target_task_lib
+  DEFINES = -Dtask_lib_EXPORTS
+  DEP_FILE = CMakeFiles/task_lib.dir/Task.cpp.o.d
   FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/lib_c.dir
-  OBJECT_FILE_DIR = CMakeFiles/lib_c.dir
+  OBJECT_DIR = CMakeFiles/task_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/task_lib.dir
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target lib_c
+# Link build statements for SHARED_LIBRARY target task_lib
 
 
 #############################################
-# Link the shared library liblib_c.so
+# Link the shared library libtask_lib.so
 
-build liblib_c.so: CXX_SHARED_LIBRARY_LINKER__lib_c_Debug CMakeFiles/lib_c.dir/libC.cpp.o
+build libtask_lib.so: CXX_SHARED_LIBRARY_LINKER__task_lib_Debug CMakeFiles/task_lib.dir/Task.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/lib_c.dir
+  OBJECT_DIR = CMakeFiles/task_lib.dir
   POST_BUILD = :
   PRE_LINK = :
-  SONAME = liblib_c.so
+  SONAME = libtask_lib.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = liblib_c.so
-  TARGET_PDB = lib_c.so.dbg
+  TARGET_FILE = libtask_lib.so
+  TARGET_PDB = task_lib.so.dbg
 
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target lib_st
+# Object build statements for SHARED_LIBRARY target main_menu_lib
 
 
 #############################################
-# Order-only phony target for lib_st
+# Order-only phony target for main_menu_lib
 
-build cmake_object_order_depends_target_lib_st: phony || CMakeFiles/lib_st.dir
+build cmake_object_order_depends_target_main_menu_lib: phony || CMakeFiles/main_menu_lib.dir
 
-build CMakeFiles/lib_st.dir/libST.cpp.o: CXX_COMPILER__lib_st_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/libST.cpp || cmake_object_order_depends_target_lib_st
-  DEFINES = -Dlib_st_EXPORTS
-  DEP_FILE = CMakeFiles/lib_st.dir/libST.cpp.o.d
+build CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o: CXX_COMPILER__main_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Main_menu.cpp || cmake_object_order_depends_target_main_menu_lib
+  DEFINES = -Dmain_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o.d
   FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/lib_st.dir
-  OBJECT_FILE_DIR = CMakeFiles/lib_st.dir
+  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/main_menu_lib.dir
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target lib_st
+# Link build statements for SHARED_LIBRARY target main_menu_lib
 
 
 #############################################
-# Link the shared library liblib_st.so
+# Link the shared library libmain_menu_lib.so
 
-build liblib_st.so: CXX_SHARED_LIBRARY_LINKER__lib_st_Debug CMakeFiles/lib_st.dir/libST.cpp.o
+build libmain_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__main_menu_lib_Debug CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/lib_st.dir
+  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
   POST_BUILD = :
   PRE_LINK = :
-  SONAME = liblib_st.so
+  SONAME = libmain_menu_lib.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = liblib_st.so
-  TARGET_PDB = lib_st.so.dbg
+  TARGET_FILE = libmain_menu_lib.so
+  TARGET_PDB = main_menu_lib.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target tutor_menu_lib
+
+
+#############################################
+# Order-only phony target for tutor_menu_lib
+
+build cmake_object_order_depends_target_tutor_menu_lib: phony || CMakeFiles/tutor_menu_lib.dir
+
+build CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o: CXX_COMPILER__tutor_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Tutor_menu.cpp || cmake_object_order_depends_target_tutor_menu_lib
+  DEFINES = -Dtutor_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/tutor_menu_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target tutor_menu_lib
+
+
+#############################################
+# Link the shared library libtutor_menu_lib.so
+
+build libtutor_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__tutor_menu_lib_Debug CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libtutor_menu_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libtutor_menu_lib.so
+  TARGET_PDB = tutor_menu_lib.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target person_lib
+
+
+#############################################
+# Order-only phony target for person_lib
+
+build cmake_object_order_depends_target_person_lib: phony || CMakeFiles/person_lib.dir
+
+build CMakeFiles/person_lib.dir/Person.cpp.o: CXX_COMPILER__person_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Person.cpp || cmake_object_order_depends_target_person_lib
+  DEFINES = -Dperson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/person_lib.dir/Person.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/person_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/person_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target person_lib
+
+
+#############################################
+# Link the shared library libperson_lib.so
+
+build libperson_lib.so: CXX_SHARED_LIBRARY_LINKER__person_lib_Debug CMakeFiles/person_lib.dir/Person.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/person_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libperson_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libperson_lib.so
+  TARGET_PDB = person_lib.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target student_menu_lib
+
+
+#############################################
+# Order-only phony target for student_menu_lib
+
+build cmake_object_order_depends_target_student_menu_lib: phony || CMakeFiles/student_menu_lib.dir
+
+build CMakeFiles/student_menu_lib.dir/Student_menu.cpp.o: CXX_COMPILER__student_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Student_menu.cpp || cmake_object_order_depends_target_student_menu_lib
+  DEFINES = -Dstudent_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/student_menu_lib.dir/Student_menu.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/student_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/student_menu_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target student_menu_lib
+
+
+#############################################
+# Link the shared library libstudent_menu_lib.so
+
+build libstudent_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__student_menu_lib_Debug CMakeFiles/student_menu_lib.dir/Student_menu.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/student_menu_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libstudent_menu_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libstudent_menu_lib.so
+  TARGET_PDB = student_menu_lib.so.dbg
 
 # =============================================================================
 # Target aliases.
 
-build lib_c: phony liblib_c.so
+build chat_lib: phony libchat_lib.so
 
-build lib_ptg: phony liblib_ptg.so
+build group_lib: phony libgroup_lib.so
 
-build lib_st: phony liblib_st.so
+build main_header: phony libmain_header.so
+
+build main_menu_lib: phony libmain_menu_lib.so
+
+build person_lib: phony libperson_lib.so
+
+build profile_menu_lib: phony libprofile_menu_lib.so
+
+build student_menu_lib: phony libstudent_menu_lib.so
+
+build task_lib: phony libtask_lib.so
+
+build tutor_menu_lib: phony libtutor_menu_lib.so
 
 # =============================================================================
 # Folder targets.
@@ -212,9 +421,9 @@ build lib_st: phony liblib_st.so
 # =============================================================================
 
 #############################################
-# Folder: /home/ilya/MIPT/C++/CLionProjects/TP-project/cmake-build-debug
+# Folder: /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug
 
-build all: phony TP_project liblib_ptg.so liblib_c.so liblib_st.so
+build all: phony libgroup_lib.so libchat_lib.so TP_2_sem_project libprofile_menu_lib.so libmain_header.so libtask_lib.so libmain_menu_lib.so libtutor_menu_lib.so libperson_lib.so libstudent_menu_lib.so
 
 # =============================================================================
 # Built-in targets
@@ -223,14 +432,14 @@ build all: phony TP_project liblib_ptg.so liblib_c.so liblib_st.so
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | ../CMakeLists.txt /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-Clang-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build ../CMakeLists.txt /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
+build ../CMakeLists.txt /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCXXInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeCommonLanguageInclude.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeGenericSystem.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeInitializeConfigs.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeLanguageInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInformation.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/CMakeSystemSpecificInitialize.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-Clang-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-C.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU-CXX.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-GNU.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux.cmake /snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/UnixPaths.cmake CMakeCache.txt CMakeFiles/3.21.1/CMakeCCompiler.cmake CMakeFiles/3.21.1/CMakeCXXCompiler.cmake CMakeFiles/3.21.1/CMakeSystem.cmake: phony
 
 
 #############################################

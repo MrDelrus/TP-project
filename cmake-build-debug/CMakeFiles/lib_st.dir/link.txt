@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,liblib_st.so -o liblib_st.so CMakeFiles/lib_st.dir/libST.cpp.o 

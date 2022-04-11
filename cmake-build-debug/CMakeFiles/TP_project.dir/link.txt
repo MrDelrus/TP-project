@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g CMakeFiles/TP_project.dir/main.cpp.o -o TP_project  -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-project/cmake-build-debug liblib_c.so liblib_st.so liblib_ptg.so libin_out.so 

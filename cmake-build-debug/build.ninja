@@ -52,6 +52,40 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target menus_lib
+
+
+#############################################
+# Order-only phony target for menus_lib
+
+build cmake_object_order_depends_target_menus_lib: phony || CMakeFiles/menus_lib.dir
+
+build CMakeFiles/menus_lib.dir/Menus.cpp.o: CXX_COMPILER__menus_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Menus.cpp || cmake_object_order_depends_target_menus_lib
+  DEFINES = -Dmenus_lib_EXPORTS
+  DEP_FILE = CMakeFiles/menus_lib.dir/Menus.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/menus_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/menus_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target menus_lib
+
+
+#############################################
+# Link the shared library libmenus_lib.so
+
+build libmenus_lib.so: CXX_SHARED_LIBRARY_LINKER__menus_lib_Debug CMakeFiles/menus_lib.dir/Menus.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/menus_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libmenus_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libmenus_lib.so
+  TARGET_PDB = menus_lib.so.dbg
+
 
 #############################################
 # Utility command for edit_cache
@@ -138,7 +172,7 @@ build libchat_lib.so: CXX_SHARED_LIBRARY_LINKER__chat_lib_Debug CMakeFiles/chat_
 #############################################
 # Order-only phony target for TP_2_sem_project
 
-build cmake_object_order_depends_target_TP_2_sem_project: phony || cmake_object_order_depends_target_chat_lib cmake_object_order_depends_target_group_lib cmake_object_order_depends_target_main_header cmake_object_order_depends_target_main_menu_lib cmake_object_order_depends_target_person_lib cmake_object_order_depends_target_profile_menu_lib cmake_object_order_depends_target_student_menu_lib cmake_object_order_depends_target_task_lib cmake_object_order_depends_target_tutor_menu_lib
+build cmake_object_order_depends_target_TP_2_sem_project: phony || cmake_object_order_depends_target_chat_lib cmake_object_order_depends_target_group_lib cmake_object_order_depends_target_main_header cmake_object_order_depends_target_main_menu_lib cmake_object_order_depends_target_menus_lib cmake_object_order_depends_target_person_lib cmake_object_order_depends_target_profile_menu_lib cmake_object_order_depends_target_student_menu_lib cmake_object_order_depends_target_task_lib cmake_object_order_depends_target_tutor_menu_lib
 
 build CMakeFiles/TP_2_sem_project.dir/main.cpp.o: CXX_COMPILER__TP_2_sem_project_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/main.cpp || cmake_object_order_depends_target_TP_2_sem_project
   DEP_FILE = CMakeFiles/TP_2_sem_project.dir/main.cpp.o.d
@@ -154,9 +188,9 @@ build CMakeFiles/TP_2_sem_project.dir/main.cpp.o: CXX_COMPILER__TP_2_sem_project
 #############################################
 # Link the executable TP_2_sem_project
 
-build TP_2_sem_project: CXX_EXECUTABLE_LINKER__TP_2_sem_project_Debug CMakeFiles/TP_2_sem_project.dir/main.cpp.o | libmain_header.so libchat_lib.so libgroup_lib.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so || libchat_lib.so libgroup_lib.so libmain_header.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so
+build TP_2_sem_project: CXX_EXECUTABLE_LINKER__TP_2_sem_project_Debug CMakeFiles/TP_2_sem_project.dir/main.cpp.o | libmain_header.so libchat_lib.so libgroup_lib.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so libmenus_lib.so || libchat_lib.so libgroup_lib.so libmain_header.so libmain_menu_lib.so libmenus_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug  libmain_header.so  libchat_lib.so  libgroup_lib.so  libmain_menu_lib.so  libperson_lib.so  libprofile_menu_lib.so  libstudent_menu_lib.so  libtask_lib.so  libtutor_menu_lib.so
+  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug  libmain_header.so  libchat_lib.so  libgroup_lib.so  libmain_menu_lib.so  libperson_lib.so  libprofile_menu_lib.so  libstudent_menu_lib.so  libtask_lib.so  libtutor_menu_lib.so  libmenus_lib.so
   OBJECT_DIR = CMakeFiles/TP_2_sem_project.dir
   POST_BUILD = :
   PRE_LINK = :
@@ -405,6 +439,8 @@ build main_header: phony libmain_header.so
 
 build main_menu_lib: phony libmain_menu_lib.so
 
+build menus_lib: phony libmenus_lib.so
+
 build person_lib: phony libperson_lib.so
 
 build profile_menu_lib: phony libprofile_menu_lib.so
@@ -423,7 +459,7 @@ build tutor_menu_lib: phony libtutor_menu_lib.so
 #############################################
 # Folder: /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug
 
-build all: phony libgroup_lib.so libchat_lib.so TP_2_sem_project libprofile_menu_lib.so libmain_header.so libtask_lib.so libmain_menu_lib.so libtutor_menu_lib.so libperson_lib.so libstudent_menu_lib.so
+build all: phony libmenus_lib.so libgroup_lib.so libchat_lib.so TP_2_sem_project libprofile_menu_lib.so libmain_header.so libtask_lib.so libmain_menu_lib.so libtutor_menu_lib.so libperson_lib.so libstudent_menu_lib.so
 
 # =============================================================================
 # Built-in targets

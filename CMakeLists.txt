@@ -31,4 +31,7 @@ target_link_libraries(TP_2_sem_project task_lib)
 add_library(tutor_menu_lib SHARED Tutor_menu.cpp)
 set_target_properties(tutor_menu_lib PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(TP_2_sem_project tutor_menu_lib)
+add_library(menus_lib SHARED Menus.cpp)
+set_target_properties(menus_lib PROPERTIES LINKER_LANGUAGE CXX)
+target_link_libraries(TP_2_sem_project menus_lib)
 

@@ -1,4 +1,5 @@
 /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/CMakeFiles/menus_lib.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/CMakeFiles/edit_cache.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/CMakeFiles/group_lib.dir
 /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug/CMakeFiles/chat_lib.dir

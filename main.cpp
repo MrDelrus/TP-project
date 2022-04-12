@@ -40,5 +40,11 @@ int main() {
     int c = x.left;
     int d = p->left;
     std::cout << "hello!";
+    std::string s;
+    std::cin >> s;
+    switch (s) {
+        case "expression":
+            break;
+    }
     return 0;
 }

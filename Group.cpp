@@ -1,6 +1,6 @@
 #include "libs.h"
 
-std::string Group::info() {
+std::string Group::get_info() {
     std::string block_students;
     for (auto s: students_names) {
         block_students += s + "\n";

@@ -35,6 +35,7 @@ public:
     std::vector<std::string> get_names_of_groups();
     type get_role();
     string get_name();
+    bool check_password(const std::string& to_check);
     const map<string, long long>& get_map_name_id();
 //    friend Profile_menu;
 //    friend Student_menu;
@@ -57,8 +58,7 @@ public:
             id(id), name(std::move(name)), tutor_name(std::move(tutor_name)), students_names(std::move(students_names)) {}
     ~Group() = default;
 
-    std::string info();
-
+    std::string get_info();
 };
 
 class Data {

@@ -29,6 +29,10 @@ string Person::get_name() {
     return name;
 }
 
+bool Person::check_password(const std::string& to_check) {
+    return password == to_check;
+}
+
 const map<string, long long>& Person::get_map_name_id() {
     return name_to_id_of_groups;
 }

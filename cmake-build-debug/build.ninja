@@ -52,40 +52,6 @@ build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
 
 build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
-# =============================================================================
-# Object build statements for SHARED_LIBRARY target menus_lib
-
-
-#############################################
-# Order-only phony target for menus_lib
-
-build cmake_object_order_depends_target_menus_lib: phony || CMakeFiles/menus_lib.dir
-
-build CMakeFiles/menus_lib.dir/Menus.cpp.o: CXX_COMPILER__menus_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Menus.cpp || cmake_object_order_depends_target_menus_lib
-  DEFINES = -Dmenus_lib_EXPORTS
-  DEP_FILE = CMakeFiles/menus_lib.dir/Menus.cpp.o.d
-  FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/menus_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/menus_lib.dir
-
-
-# =============================================================================
-# Link build statements for SHARED_LIBRARY target menus_lib
-
-
-#############################################
-# Link the shared library libmenus_lib.so
-
-build libmenus_lib.so: CXX_SHARED_LIBRARY_LINKER__menus_lib_Debug CMakeFiles/menus_lib.dir/Menus.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/menus_lib.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  SONAME = libmenus_lib.so
-  SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = libmenus_lib.so
-  TARGET_PDB = menus_lib.so.dbg
-
 
 #############################################
 # Utility command for edit_cache
@@ -188,14 +154,82 @@ build CMakeFiles/TP_2_sem_project.dir/main.cpp.o: CXX_COMPILER__TP_2_sem_project
 #############################################
 # Link the executable TP_2_sem_project
 
-build TP_2_sem_project: CXX_EXECUTABLE_LINKER__TP_2_sem_project_Debug CMakeFiles/TP_2_sem_project.dir/main.cpp.o | libmain_header.so libchat_lib.so libgroup_lib.so libmain_menu_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so libmenus_lib.so || libchat_lib.so libgroup_lib.so libmain_header.so libmain_menu_lib.so libmenus_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so
+build TP_2_sem_project: CXX_EXECUTABLE_LINKER__TP_2_sem_project_Debug CMakeFiles/TP_2_sem_project.dir/main.cpp.o | libmain_header.so libchat_lib.so libgroup_lib.so libmain_menu_lib.so libmenus_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so || libchat_lib.so libgroup_lib.so libmain_header.so libmain_menu_lib.so libmenus_lib.so libperson_lib.so libprofile_menu_lib.so libstudent_menu_lib.so libtask_lib.so libtutor_menu_lib.so
   FLAGS = -g
-  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug  libmain_header.so  libchat_lib.so  libgroup_lib.so  libmain_menu_lib.so  libperson_lib.so  libprofile_menu_lib.so  libstudent_menu_lib.so  libtask_lib.so  libtutor_menu_lib.so  libmenus_lib.so
+  LINK_LIBRARIES = -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug  libmain_header.so  libchat_lib.so  libgroup_lib.so  libmain_menu_lib.so  libmenus_lib.so  libperson_lib.so  libprofile_menu_lib.so  libstudent_menu_lib.so  libtask_lib.so  libtutor_menu_lib.so
   OBJECT_DIR = CMakeFiles/TP_2_sem_project.dir
   POST_BUILD = :
   PRE_LINK = :
   TARGET_FILE = TP_2_sem_project
   TARGET_PDB = TP_2_sem_project.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target tutor_menu_lib
+
+
+#############################################
+# Order-only phony target for tutor_menu_lib
+
+build cmake_object_order_depends_target_tutor_menu_lib: phony || CMakeFiles/tutor_menu_lib.dir
+
+build CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o: CXX_COMPILER__tutor_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Tutor_menu.cpp || cmake_object_order_depends_target_tutor_menu_lib
+  DEFINES = -Dtutor_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/tutor_menu_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target tutor_menu_lib
+
+
+#############################################
+# Link the shared library libtutor_menu_lib.so
+
+build libtutor_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__tutor_menu_lib_Debug CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libtutor_menu_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libtutor_menu_lib.so
+  TARGET_PDB = tutor_menu_lib.so.dbg
+
+# =============================================================================
+# Object build statements for SHARED_LIBRARY target main_menu_lib
+
+
+#############################################
+# Order-only phony target for main_menu_lib
+
+build cmake_object_order_depends_target_main_menu_lib: phony || CMakeFiles/main_menu_lib.dir
+
+build CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o: CXX_COMPILER__main_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Main_menu.cpp || cmake_object_order_depends_target_main_menu_lib
+  DEFINES = -Dmain_menu_lib_EXPORTS
+  DEP_FILE = CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/main_menu_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target main_menu_lib
+
+
+#############################################
+# Link the shared library libmain_menu_lib.so
+
+build libmain_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__main_menu_lib_Debug CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libmain_menu_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libmain_menu_lib.so
+  TARGET_PDB = main_menu_lib.so.dbg
 
 # =============================================================================
 # Object build statements for SHARED_LIBRARY target profile_menu_lib
@@ -293,106 +327,38 @@ build libtask_lib.so: CXX_SHARED_LIBRARY_LINKER__task_lib_Debug CMakeFiles/task_
   TARGET_PDB = task_lib.so.dbg
 
 # =============================================================================
-# Object build statements for SHARED_LIBRARY target main_menu_lib
+# Object build statements for SHARED_LIBRARY target menus_lib
 
 
 #############################################
-# Order-only phony target for main_menu_lib
+# Order-only phony target for menus_lib
 
-build cmake_object_order_depends_target_main_menu_lib: phony || CMakeFiles/main_menu_lib.dir
+build cmake_object_order_depends_target_menus_lib: phony || CMakeFiles/menus_lib.dir
 
-build CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o: CXX_COMPILER__main_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Main_menu.cpp || cmake_object_order_depends_target_main_menu_lib
-  DEFINES = -Dmain_menu_lib_EXPORTS
-  DEP_FILE = CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o.d
+build CMakeFiles/menus_lib.dir/Menus.cpp.o: CXX_COMPILER__menus_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Menus.cpp || cmake_object_order_depends_target_menus_lib
+  DEFINES = -Dmenus_lib_EXPORTS
+  DEP_FILE = CMakeFiles/menus_lib.dir/Menus.cpp.o.d
   FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/main_menu_lib.dir
+  OBJECT_DIR = CMakeFiles/menus_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/menus_lib.dir
 
 
 # =============================================================================
-# Link build statements for SHARED_LIBRARY target main_menu_lib
+# Link build statements for SHARED_LIBRARY target menus_lib
 
 
 #############################################
-# Link the shared library libmain_menu_lib.so
+# Link the shared library libmenus_lib.so
 
-build libmain_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__main_menu_lib_Debug CMakeFiles/main_menu_lib.dir/Main_menu.cpp.o
+build libmenus_lib.so: CXX_SHARED_LIBRARY_LINKER__menus_lib_Debug CMakeFiles/menus_lib.dir/Menus.cpp.o
   LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/main_menu_lib.dir
+  OBJECT_DIR = CMakeFiles/menus_lib.dir
   POST_BUILD = :
   PRE_LINK = :
-  SONAME = libmain_menu_lib.so
+  SONAME = libmenus_lib.so
   SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = libmain_menu_lib.so
-  TARGET_PDB = main_menu_lib.so.dbg
-
-# =============================================================================
-# Object build statements for SHARED_LIBRARY target tutor_menu_lib
-
-
-#############################################
-# Order-only phony target for tutor_menu_lib
-
-build cmake_object_order_depends_target_tutor_menu_lib: phony || CMakeFiles/tutor_menu_lib.dir
-
-build CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o: CXX_COMPILER__tutor_menu_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Tutor_menu.cpp || cmake_object_order_depends_target_tutor_menu_lib
-  DEFINES = -Dtutor_menu_lib_EXPORTS
-  DEP_FILE = CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o.d
-  FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/tutor_menu_lib.dir
-
-
-# =============================================================================
-# Link build statements for SHARED_LIBRARY target tutor_menu_lib
-
-
-#############################################
-# Link the shared library libtutor_menu_lib.so
-
-build libtutor_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__tutor_menu_lib_Debug CMakeFiles/tutor_menu_lib.dir/Tutor_menu.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/tutor_menu_lib.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  SONAME = libtutor_menu_lib.so
-  SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = libtutor_menu_lib.so
-  TARGET_PDB = tutor_menu_lib.so.dbg
-
-# =============================================================================
-# Object build statements for SHARED_LIBRARY target person_lib
-
-
-#############################################
-# Order-only phony target for person_lib
-
-build cmake_object_order_depends_target_person_lib: phony || CMakeFiles/person_lib.dir
-
-build CMakeFiles/person_lib.dir/Person.cpp.o: CXX_COMPILER__person_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Person.cpp || cmake_object_order_depends_target_person_lib
-  DEFINES = -Dperson_lib_EXPORTS
-  DEP_FILE = CMakeFiles/person_lib.dir/Person.cpp.o.d
-  FLAGS = -g -fPIC -std=gnu++2a
-  OBJECT_DIR = CMakeFiles/person_lib.dir
-  OBJECT_FILE_DIR = CMakeFiles/person_lib.dir
-
-
-# =============================================================================
-# Link build statements for SHARED_LIBRARY target person_lib
-
-
-#############################################
-# Link the shared library libperson_lib.so
-
-build libperson_lib.so: CXX_SHARED_LIBRARY_LINKER__person_lib_Debug CMakeFiles/person_lib.dir/Person.cpp.o
-  LANGUAGE_COMPILE_FLAGS = -g
-  OBJECT_DIR = CMakeFiles/person_lib.dir
-  POST_BUILD = :
-  PRE_LINK = :
-  SONAME = libperson_lib.so
-  SONAME_FLAG = -Wl,-soname,
-  TARGET_FILE = libperson_lib.so
-  TARGET_PDB = person_lib.so.dbg
+  TARGET_FILE = libmenus_lib.so
+  TARGET_PDB = menus_lib.so.dbg
 
 # =============================================================================
 # Object build statements for SHARED_LIBRARY target student_menu_lib
@@ -429,6 +395,40 @@ build libstudent_menu_lib.so: CXX_SHARED_LIBRARY_LINKER__student_menu_lib_Debug 
   TARGET_PDB = student_menu_lib.so.dbg
 
 # =============================================================================
+# Object build statements for SHARED_LIBRARY target person_lib
+
+
+#############################################
+# Order-only phony target for person_lib
+
+build cmake_object_order_depends_target_person_lib: phony || CMakeFiles/person_lib.dir
+
+build CMakeFiles/person_lib.dir/Person.cpp.o: CXX_COMPILER__person_lib_Debug /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/Person.cpp || cmake_object_order_depends_target_person_lib
+  DEFINES = -Dperson_lib_EXPORTS
+  DEP_FILE = CMakeFiles/person_lib.dir/Person.cpp.o.d
+  FLAGS = -g -fPIC -std=gnu++2a
+  OBJECT_DIR = CMakeFiles/person_lib.dir
+  OBJECT_FILE_DIR = CMakeFiles/person_lib.dir
+
+
+# =============================================================================
+# Link build statements for SHARED_LIBRARY target person_lib
+
+
+#############################################
+# Link the shared library libperson_lib.so
+
+build libperson_lib.so: CXX_SHARED_LIBRARY_LINKER__person_lib_Debug CMakeFiles/person_lib.dir/Person.cpp.o
+  LANGUAGE_COMPILE_FLAGS = -g
+  OBJECT_DIR = CMakeFiles/person_lib.dir
+  POST_BUILD = :
+  PRE_LINK = :
+  SONAME = libperson_lib.so
+  SONAME_FLAG = -Wl,-soname,
+  TARGET_FILE = libperson_lib.so
+  TARGET_PDB = person_lib.so.dbg
+
+# =============================================================================
 # Target aliases.
 
 build chat_lib: phony libchat_lib.so
@@ -459,7 +459,7 @@ build tutor_menu_lib: phony libtutor_menu_lib.so
 #############################################
 # Folder: /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug
 
-build all: phony libmenus_lib.so libgroup_lib.so libchat_lib.so TP_2_sem_project libprofile_menu_lib.so libmain_header.so libtask_lib.so libmain_menu_lib.so libtutor_menu_lib.so libperson_lib.so libstudent_menu_lib.so
+build all: phony libgroup_lib.so libchat_lib.so TP_2_sem_project libtutor_menu_lib.so libmain_menu_lib.so libprofile_menu_lib.so libmain_header.so libtask_lib.so libmenus_lib.so libstudent_menu_lib.so libperson_lib.so
 
 # =============================================================================
 # Built-in targets

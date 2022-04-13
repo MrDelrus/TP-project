@@ -124,20 +124,20 @@ public:
     std::tuple<std::string, Person *, Group *, Task *, Chat *> Task_menu_for_student(Person *p, Group *g, Task *t) {
         std::cout << t->get_info();
         std::cout << "You can:\n1) print_info\n2) get_chat\n3) close_task\n4) back\n";
-        std::string option;
+        int option;
         while (true) {
             std::cin >> option;
             switch (option) {
-                case "print_info":
+                case 1:
                     std::cout << g->get_info();
                     break;
-                case "get_chat":
+                case 2:
                     return std::tuple<std::string, Person *, Group *, Task *, Chat *>("chat", p, g, t, &(t->discussion));
-                case "close_task":
+                case 3:
                     t->close_task();
                     return std::tuple<std::string, Person *, Group *, Task *, Chat *>("group", p, g, nullptr, nullptr);
                     break;
-                case "back":
+                case 4:
                     return std::tuple<std::string, Person *, Group *, Task *, Chat *>("group", p, g, nullptr, nullptr);
                 default:
                     std::cout << "wrong request\n";

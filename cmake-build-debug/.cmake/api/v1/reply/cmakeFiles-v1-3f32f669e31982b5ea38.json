@@ -99,27 +99,12 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang-CXX.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/Clang.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
+			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU-CXX.cmake"
 		},
 		{
 			"isCMake" : true,
 			"isExternal" : true,
 			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Compiler/GNU.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "/snap/clion/184/bin/cmake/linux/share/cmake-3.21/Modules/Platform/Linux-Clang-CXX.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -140,8 +125,8 @@
 	"kind" : "cmakeFiles",
 	"paths" : 
 	{
-		"build" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug",
-		"source" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
+		"build" : "/home/mrdelrus/CLion Projects/TP-project/cmake-build-debug",
+		"source" : "/home/mrdelrus/CLion Projects/TP-project"
 	},
 	"version" : 
 	{

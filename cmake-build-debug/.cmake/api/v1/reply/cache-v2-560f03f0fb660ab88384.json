@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug"
+			"value" : "/home/mrdelrus/CLion Projects/TP-project/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -143,7 +143,7 @@
 				}
 			],
 			"type" : "UNINITIALIZED",
-			"value" : "/usr/bin/clang++"
+			"value" : "/usr/bin/g++"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_AR",
@@ -155,11 +155,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "LLVM archiver"
+					"value" : "A wrapper around 'ar' adding the appropriate '--plugin' option for the GCC compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/llvm-ar-10"
+			"value" : "/usr/bin/gcc-ar-9"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER_RANLIB",
@@ -171,11 +171,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "Generate index for LLVM archive"
+					"value" : "A wrapper around 'ranlib' adding the appropriate '--plugin' option for the GCC compiler"
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "/usr/bin/llvm-ranlib-10"
+			"value" : "/usr/bin/gcc-ranlib-9"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -579,7 +579,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
+			"value" : "/home/mrdelrus/CLion Projects/TP-project"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -819,7 +819,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "TP_2_sem_project"
+			"value" : "TP_project"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1102,78 +1102,6 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "TP-2-sem-project_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug"
-		},
-		{
-			"name" : "TP-2-sem-project_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "TP-2-sem-project_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
-		},
-		{
-			"name" : "TP_2_sem_project_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug"
-		},
-		{
-			"name" : "TP_2_sem_project_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "TP_2_sem_project_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
-		},
-		{
 			"name" : "TP_project_BINARY_DIR",
 			"properties" : 
 			[
@@ -1183,7 +1111,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug"
+			"value" : "/home/mrdelrus/CLion Projects/TP-project/cmake-build-debug"
 		},
 		{
 			"name" : "TP_project_IS_TOP_LEVEL",
@@ -1207,7 +1135,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
+			"value" : "/home/mrdelrus/CLion Projects/TP-project"
 		}
 	],
 	"kind" : "cache",

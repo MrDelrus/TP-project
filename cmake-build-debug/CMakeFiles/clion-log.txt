@@ -1,4 +1,4 @@
-/snap/clion/184/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/184/bin/ninja/linux/ninja -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -G Ninja /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project
+/snap/clion/184/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/snap/clion/184/bin/ninja/linux/ninja -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G Ninja "/home/mrdelrus/CLion Projects/TP-project"
 -- Configuring done
 -- Generating done
--- Build files have been written to: /home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug
+-- Build files have been written to: /home/mrdelrus/CLion Projects/TP-project/cmake-build-debug

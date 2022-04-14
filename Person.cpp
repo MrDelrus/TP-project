@@ -1,46 +1,28 @@
-#include "libs.h"
+#include <utility>
 
-Person::Person() {
-    name = "";
-    password = "ghdjkdsghkfjdh";
-    role = student;
-    name_to_id_of_groups = map<string, long long>();
-}
+#include "library.h"
 
-Person::Person(const Person& to_copy) {
-    name = to_copy.name;
-    password = to_copy.password;
-    role = to_copy.role;
-    name_to_id_of_groups = to_copy.name_to_id_of_groups;
-}
+class Person {
+private:
+    std::string name;
+    std::string password;
+    type role;
+public:
+    std::map<std::string, long long> name_to_id;
 
-Person::Person(string name_c, string pass_c, type type_c, map<string, long long> to_copy) {
-    name = std::move(name_c);
-    password = std::move(pass_c);
-    role = type_c;
-    name_to_id_of_groups = std::move(to_copy);
-}
+    Person(std::string  name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {}
+    Person(const Person& copy) = default;
+    Person& operator= (const Person& copy) = default;
+    ~Person() = default;
 
-type Person::get_role() {
-    return role;
-}
-
-string Person::get_name() {
-    return name;
-}
-
-bool Person::check_password(const std::string& to_check) {
-    return password == to_check;
-}
-
-const map<string, long long>& Person::get_map_name_id() {
-    return name_to_id_of_groups;
-}
-
-std::vector<std::string> Person::get_names_of_groups() {
-    std::vector <std::string> names_of_groups;
-    for (const auto& p: name_to_id_of_groups) {
-        names_of_groups.push_back(p.first);
+    const std::string& get_name() {
+        return name;
     }
-    return names_of_groups;
-}
+    bool check_password(const std::string& try_password) {
+        return try_password == password;
+    }
+    const type& get_role() {
+        return role;
+    }
+
+};

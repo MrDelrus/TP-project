@@ -1,4 +1,6 @@
-#pragma once
+#include <utility>
+
+#include "library.h"
 #include "Chat.cpp"
 
 class Task {
@@ -10,16 +12,23 @@ private:
     std::string student;
     Chat discussion;
 public:
-    Task(const std::string& name, const std::string& problem,
-          const std::string& tutor_name, const std::string& student_name, const Chat& discussion):
-            is_open(true), name(name), problem(problem), tutor(tutor_name), student(student_name),
-            discussion(Chat(tutor_name + " " + student_name,
-                            set<string>({tutor_name, student_name}))) {}
+    Task(std::string name, std::string problem, const std::string& tutor_name, const std::string& student_name):
+            is_open(true), name(std::move(name)), problem(std::move(problem)), tutor(tutor_name), student(student_name),
+            discussion(Chat(std::vector<std::string>({tutor_name, student_name}))) {};
+    Task(const Task& copy) = default;
+    Task& operator= (const Task& copy) = default;
     ~Task() = default;
 
-    std::string info() {
-        std::string text = "Task: " + name + "\nTutor: " +
-                tutor + "\nStudent: " + student + "\nProblem:\n" + problem;
-        return text;
+    std::string get_info() {
+        return "Task: " + name + "\nTutor: " + tutor + "\nStudent: " + student + "\nProblem:\n" + problem;
+    }
+    void change_problem(const std::string& new_problem) {
+        problem = new_problem;
+    }
+    Chat* get_discussion() {
+        return &discussion;
+    }
+    void close() {
+        is_open = false;
     }
 };

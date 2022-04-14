@@ -1,4 +1,5 @@
 // glhf
+#pragma once
 #include "library.h"
 
 class Chat {

@@ -1,10 +1,11 @@
 // glhf there too
-
+#pragma once
 #include "library.h"
 #include <iostream>
 #include "Person.cpp"
 #include "Group.cpp"
 #include "Data.cpp"
+#include <cstdlib>
 
 class Menu {
 private:
@@ -16,9 +17,9 @@ private:
 
 
     void Main_menu() {
-        std::cout << "You can:\n1) sign in\n2) sign up\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) sign in\n2) sign up\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -68,19 +69,21 @@ private:
                     }
                     current_person = new Person(client_name, client_password, real_role);
                     current_string = "profile " + client_role;
+                    std::cout << "You have been registered! Now you can use it!";
                     return;
                 }
                 default: {
                     std::cout << "wrong request\n";
+                    break;
                 }
             }
         }
     }
 
     void Profile_menu() {
-        std::cout << "You can:\n1) show groups\n2) choose group\n3) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) show groups\n2) choose group\n3) add group if you are tutor\n4) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -92,26 +95,58 @@ private:
                     std::cout << "Enter group name\n";
                     std::string group_name;
                     std::cin >> group_name;
-                    current_group = &Data::id_to_group[current_person->name_to_id_of_groups[group_name]];
+                    current_group = &(Data::id_to_group[current_person->name_to_id_of_groups[group_name]]);
                     std::string client_role = current_person->get_role() == type::student ? "student" : "tutor";
                     current_string = "group " + client_role;
                     return;
                 }
                 case 3: {
+                    if (current_person->get_role() == type::student) {
+                        std::cout << "Sorry, you are not a tutor!\n";
+                        break;
+                    }
+                    std::cout << "Enter group's name, number of students and students' names which you want in this group\n";
+                    std::string group_name, helper;
+                    std::cin >> group_name;
+                    int number_of_students;
+                    std::cin >> number_of_students;
+                    std::set<std::string> students_names = std::set<std::string>();
+                    long long id = std::rand();
+                    for (int i = 0; i < number_of_students; ++i) {
+                        std::cin >> helper;
+                        if (Data::name_to_person.find(helper) == Data::name_to_person.end()) {
+                            std::cout << "There is no such student in database\n";
+                        }
+                        else {
+                            students_names.insert(helper);
+                            Data::name_to_person[helper].add_group(group_name, id);
+                        }
+                    }
+                    current_person->add_group(group_name, id);
+                    Group new_group (group_name, current_person->get_name(), students_names, id);
+                    Data::id_to_group[id] = new_group;
+                    std::cout << "New group was made successfully!\n";
+                    break;
+                }
+                case 4: {
                     current_person = nullptr;
                     std::string client_role = current_person->get_role() == type::student ? "student" : "tutor";
                     current_string = "main " + client_role;
+                    std::cout << "You returned back\n";
                     return;
                 }
+                default:
+                    std::cout << "wrong request\n";
+                    break;
             }
         }
     }
 
     void Group_menu_for_student() {
         std::cout << current_group->get_info();
-        std::cout << "You can:\n1) print_info\n2) choose_task\n3) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) print_info\n2) choose_task\n3) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -119,6 +154,7 @@ private:
                     break;
                 }
                 case 2: {
+                    std::cout << "Enter the task's name\n";
                     std::string name;
                     std::cin >> name;
                     current_string = "task student";
@@ -133,15 +169,16 @@ private:
                 }
                 default:
                     std::cout << "wrong request\n";
+                    break;
             }
         }
     }
 
     void Task_menu_for_student() {
         std::cout << current_task->get_info();
-        std::cout << "You can:\n1) print_info\n2) get_chat\n3) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) print_info\n2) get_chat\n3) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -161,15 +198,16 @@ private:
                 }
                 default:
                     std::cout << "wrong request\n";
+                    break;
             }
         }
     }
 
     void Group_menu_for_tutor() {
         std::cout << current_group->get_info();
-        std::cout << "You can:\n1) print_info\n2) print_students\n3) choose_task\n4) create_task\n5) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) print_info\n2) print_students\n3) choose_task\n4) create_task\n5) add student\n6) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -206,9 +244,23 @@ private:
                     std::string student_name;
                     std::cin >> student_name;
                     current_group->add_task(name_of_task, text_of_task, student_name);
-                }
                     break;
+                }
                 case 5: {
+                    std::cout << "Enter student's name\n";
+                    std::string student_name;
+                    std::cin >> student_name;
+                    if (Data::name_to_person.find(student_name) == Data::name_to_person.end()) {
+                        std::cout << "There is no such a student!\n";
+                    }
+                    else {
+                        current_group->add_student(student_name);
+                        Data::name_to_person[student_name].add_group(current_group->get_name(), current_group->get_id());
+                        std::cout << "The student was added successfully\n";
+                    }
+                    break;
+                }
+                case 6: {
                     current_string = "group tutor";
                     current_group = nullptr;
                     current_task = nullptr;
@@ -217,15 +269,16 @@ private:
                 }
                 default:
                     std::cout << "wrong request";
+                    break;
             }
         }
     }
 
     void Task_menu_for_tutor() {
         std::cout << current_task->get_info();
-        std::cout << "You can:\n1) print_info\n2) get_chat\n3) close_task\n4) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) print_info\n2) get_chat\n3) close_task\n4) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -250,15 +303,16 @@ private:
                     //return std::tuple<std::string, Person *, Group *, Task *, Chat *>("group", p, g, nullptr, nullptr);
                 default:
                     std::cout << "wrong request\n";
+                    break;
             }
         }
     }
 
     void Chat_menu() {
         std::cout << current_chat->chat_name;
-        std::cout << "You can:\n1) print_chat\n2) print last n messages\n3) write a message\n4) back\n";
         int option;
         while (true) {
+            std::cout << "You can:\n1) print_chat\n2) print last n messages\n3) write a message\n4) back\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -290,14 +344,66 @@ private:
     }
 
 public:
-    Menu() = default;
+    Menu() {
+        current_string = "main student";
+    }
     ~Menu() = default;
     Menu(const Menu& to_copy) = default;
     Menu& operator = (const Menu& to_copy) = default;
 
     void basic_menu() {
+        while (true)
+        {
+            if (current_string == "profile student" or current_string == "profile tutor")
+            {
+                Profile_menu();
+            }
+            else {
+                if (current_string == "main student" or "main tutor")
+                {
+                    Main_menu();
+                }
+                else {
+                    if (current_string == "group student")
+                    {
+                        Group_menu_for_student();
+                    }
+                    else {
+                        if (current_string == "group tutor")
+                        {
+                            Group_menu_for_tutor();
+                        }
+                        
+                        else {
+                            if (current_string == "task student")
+                            {
+                                Task_menu_for_student();
+                            }
+                            else {
+                                if (current_string == "task tutor")
+                                {
+                                    Task_menu_for_tutor();
+                                }
+                                else {
+                                    if (current_string == "chat tutor" or current_string == "chat student")
+                                    {
+                                        Chat_menu();
+                                    }
+                                    else {
+                                        std::cout << "Something went wrong in base menu";
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
         
     }
 
     
 };
+

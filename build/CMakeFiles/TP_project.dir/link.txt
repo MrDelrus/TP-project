@@ -1,1 +1,0 @@
-/usr/bin/c++     CMakeFiles/TP_project.dir/main.cpp.o  -o TP_project  -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/build libmain_header.so libchat_lib.so libdata_lib.so libgroup_lib.so libmenu_lib.so libperson_lib.so libtask_lib.so 

@@ -10,11 +10,11 @@ public:
     std::vector<std::string> students_names;
     std::map<std::string, Task> tasks;
 
-    Group() = default; // смотря как ты хочешь заполнять группу и работать с id
+    Group() = default; // TODO: смотря как ты хочешь заполнять группу и работать с id
     Group(const Group& copy) = default;
     Group& operator= (const Group& copy) = default;
     ~Group() = default;
-
+    
     const long long& get_id() {
         return id;
     }

@@ -1,0 +1,123 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TP_project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TP_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP_project-Debug-28afafece1023c5f869b.json",
+					"name" : "TP_project",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chat_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chat_lib-Debug-0cdbeb7136e38f823623.json",
+					"name" : "chat_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "data_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-data_lib-Debug-5320a312f7f42b2fb51e.json",
+					"name" : "data_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "group_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-group_lib-Debug-ff9241c3872c7193ad52.json",
+					"name" : "group_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_header::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_header-Debug-12101edb94d85a8c0d51.json",
+					"name" : "main_header",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "menu_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-menu_lib-Debug-d6a10fd2e49c8410d491.json",
+					"name" : "menu_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "person_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-person_lib-Debug-6ad3ee2811bde360d813.json",
+					"name" : "person_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "task_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-task_lib-Debug-d0dac2d9560aa6de1a5c.json",
+					"name" : "task_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project/cmake-build-debug",
+		"source" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-2-sem-project"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

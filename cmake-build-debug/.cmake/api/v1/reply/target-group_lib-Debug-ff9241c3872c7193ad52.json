@@ -2,7 +2,7 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "TP_project"
+			"path" : "libgroup_lib.so"
 		}
 	],
 	"backtrace" : 1,
@@ -10,7 +10,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable"
+			"add_library"
 		],
 		"files" : 
 		[
@@ -24,7 +24,7 @@
 			{
 				"command" : 0,
 				"file" : 0,
-				"line" : 6,
+				"line" : 16,
 				"parent" : 0
 			}
 		]
@@ -35,10 +35,16 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g"
+					"fragment" : "-g -fPIC"
 				},
 				{
-					"fragment" : "-std=gnu++14"
+					"fragment" : "-std=gnu++2a"
+				}
+			],
+			"defines" : 
+			[
+				{
+					"define" : "group_lib_EXPORTS"
 				}
 			],
 			"language" : "CXX",
@@ -48,7 +54,7 @@
 				[
 					1
 				],
-				"standard" : "14"
+				"standard" : "20"
 			},
 			"sourceIndexes" : 
 			[
@@ -56,15 +62,11 @@
 			]
 		}
 	],
-	"id" : "TP_project::@6890427a1f51a3e7e1df",
+	"id" : "group_lib::@6890427a1f51a3e7e1df",
 	"link" : 
 	{
 		"commandFragments" : 
 		[
-			{
-				"fragment" : "-g",
-				"role" : "flags"
-			},
 			{
 				"fragment" : "",
 				"role" : "flags"
@@ -72,8 +74,8 @@
 		],
 		"language" : "CXX"
 	},
-	"name" : "TP_project",
-	"nameOnDisk" : "TP_project",
+	"name" : "group_lib",
+	"nameOnDisk" : "libgroup_lib.so",
 	"paths" : 
 	{
 		"build" : ".",
@@ -94,9 +96,9 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "main.cpp",
+			"path" : "Group.cpp",
 			"sourceGroupIndex" : 0
 		}
 	],
-	"type" : "EXECUTABLE"
+	"type" : "SHARED_LIBRARY"
 }

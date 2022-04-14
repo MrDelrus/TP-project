@@ -8,9 +8,11 @@ private:
     std::string password;
     type role;
 public:
-    std::map<std::string, long long> name_to_id;
+    std::map<std::string, long long> name_to_id_of_groups;
 
-    Person(std::string  name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {}
+    Person(std::string  name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {
+        name_to_id_of_groups = std::map<std::string, long long>(); 
+    }
     Person(const Person& copy) = default;
     Person& operator= (const Person& copy) = default;
     ~Person() = default;
@@ -25,4 +27,11 @@ public:
         return role;
     }
 
+    std::string get_groups() {
+        std::string answer = "";
+        for (const auto& p: name_to_id_of_groups) {
+            answer += p.first + "\n";
+        }
+        return answer;
+    }
 };

@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libtask_lib.so -o libtask_lib.so CMakeFiles/task_lib.dir/Task.cpp.o 

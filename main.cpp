@@ -1,0 +1,15 @@
+#include "Menu.cpp"
+
+//www.plantuml.com/plantuml/png/fLL1Rziy3BtxL_3e-FjSRDUsCmfqm4u31hHtGx4KHwWi6HBTRSZotrVHyXpBgMribo8q7yd7HufzSCWiTerAAi
+// MSWyyC6PmI083_u7IGGl4pEEItjmrhx-c7Gojr_Jzy4zOPNO1cZIZHb2tPxuKgesjGnWT-iQPh2v3SHzNUICv9GfNpt8IyeqtmfESNd85XFfOPYH6Vk
+// VjkSBVCkU_6yWY2Fri1rYYngVS_tOpjIrwQGz-E6t8q0eycebSBB7rCkejHUsCKL4THlPG3oVGYCiOJPKhdQQUxkvMgWTkyBkEyzwNNUzmbvq5-cWMS
+// O2hU20N9jqycTcE7nf8scsPmOHJWiED2ewDmjod-cRcN0l3jRpoliH_IJV9qjwQjr0SpHxqQoKbUNsMgxYOZJaYSCoeOPxnUkrB6YNKi-Lv5XSPUQbH
+// GfK7QTH5eW0igX4nJAkUaNweipwczi6hqEthduOb8LvfMwBzVjDQQlH9DX7ZsxBD-2oFNKqyy6zOiSZyU6GANhkgSaqR_mwvKHwPhKGQ2IpEZelqgZ9
+// NJrItmUfEoNcwV8Wbwax7zhgx_OyWAQ8LfrJnctBL6ECTgKG1doDvTcu1A9oEa6lJQ9oy6KFp0cGeX0wcbcCCXfKkbHj3m2Jv-yCgG1bwPhxr_q2QOz
+// _TFQBiAYuA4ckiKKuj04Kr_LXz3VjqjQK-dlcpUK14cI1rgHavwLndGQOzST4VezbrPvSol8LuTnvuvMH6Hi6fv16YOr4l-rfg3L689GdpBWx7zFTa6
+// 3Gzp0YOCDJdF5WCMSv0UuRCV6ethvkPN4VGVF_IQZpO9FPhzYtiGcdUD-Wq0
+
+int main() {
+    Menu main_menu = Menu();
+    main_menu.basic_menu();
+}

@@ -309,7 +309,7 @@ private:
     }
 
     void Chat_menu() {
-        std::cout << current_chat->chat_name;
+        std::cout << current_chat->get_name();
         int option;
         while (true) {
             std::cout << "You can:\n1) print_chat\n2) print last n messages\n3) write a message\n4) back\n";
@@ -399,11 +399,7 @@ public:
                     }
                 }
             }
-            
         }
-        
     }
-
-    
 };
 

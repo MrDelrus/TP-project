@@ -15,20 +15,26 @@ public:
         password = "";
         role = type::student;
     }
-    Person(std::string  name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {
+    Person(std::string name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {
         name_to_id_of_groups = std::map<std::string, long long>(); 
     }
     Person(const Person& copy) = default;
-    Person& operator= (const Person& copy) = default;
+    Person& operator = (const Person& copy) = default;
     ~Person() = default;
 
-    const std::string& get_name() {
+    [[nodiscard]] const std::string& get_name() const {
         return name;
     }
+
+    [[nodiscard]] const std::string& get_password() const {
+        return password;
+    }
+
     bool check_password(const std::string& try_password) {
         return try_password == password;
     }
-    const type& get_role() {
+
+    [[nodiscard]] const type& get_role() const {
         return role;
     }
 
@@ -43,4 +49,6 @@ public:
     void add_group(const std::string& name_of_group, long long id_of_group) {
         name_to_id_of_groups[name_of_group] = id_of_group;
     }
+
+    friend class PersonDataHandler;
 };

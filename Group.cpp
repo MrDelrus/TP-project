@@ -17,6 +17,7 @@ public:
         name = std::move(name_c);
         tutor_name = std::move(tutor_name_c);
         students_names = std::move(students_names_c);
+        id = 0;
         try {
             id = std::rand();
         }
@@ -29,7 +30,7 @@ public:
         id = id_c;
     }
     Group(const Group& copy) = default;
-    Group& operator= (const Group& copy) = default;
+    Group& operator = (const Group& copy) = default;
     ~Group() = default;
 
     std::string get_name() {
@@ -60,6 +61,9 @@ public:
     void add_task(const std::string& task_name, const std::string& task_problem, const std::string& student_name) {
         tasks[task_name] = Task(task_name, task_problem, tutor_name, student_name);
     }
+    void add_task(const Task& to_add) {
+        tasks[to_add.get_name()] = to_add;
+    }
     Task* get_task(const std::string& task_name) {
         return &tasks[task_name];
     }
@@ -75,4 +79,6 @@ public:
     void add_student(const std::string& student_name) {
         students_names.insert(student_name);
     }
+
+    friend class GroupDataHandler;
 };

@@ -1,0 +1,1 @@
+/usr/bin/clang++ -g CMakeFiles/TP_project.dir/main.cpp.o -o TP_project  -Wl,-rpath,/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/cmake-build-debug libmain_header.so libchat_lib.so libdata_lib.so libgroup_lib.so libmenu_lib.so libperson_lib.so libtask_lib.so libdatahandler.so libjson.so 

@@ -1,0 +1,1 @@
+/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,libmenu_lib.so -o libmenu_lib.so CMakeFiles/menu_lib.dir/Menu.cpp.o 

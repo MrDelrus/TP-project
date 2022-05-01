@@ -1,0 +1,10 @@
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/rebuild_cache.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/edit_cache.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/task_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/menu_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/group_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/chat_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/person_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/main_header.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/data_lib.dir
+/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/build/CMakeFiles/TP_project.dir

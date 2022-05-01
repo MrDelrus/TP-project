@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,libgroup_lib.so -o libgroup_lib.so CMakeFiles/group_lib.dir/Group.cpp.o 

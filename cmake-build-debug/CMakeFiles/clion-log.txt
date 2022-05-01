@@ -1,4 +1,0 @@
-/snap/clion/189/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -G "CodeBlocks - Unix Makefiles" -S /home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project -B /home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/cmake-build-debug
--- Configuring done
--- Generating done
--- Build files have been written to: /home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/cmake-build-debug

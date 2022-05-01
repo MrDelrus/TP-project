@@ -1,1 +1,0 @@
-/usr/bin/clang++ -fPIC -g -shared -Wl,-soname,libdata_lib.so -o libdata_lib.so CMakeFiles/data_lib.dir/Data.cpp.o 

@@ -2,6 +2,11 @@
 #include "library.h"
 #include "Person.cpp"
 #include "Group.cpp"
+#include "json.hpp"
+#include <fstream>
+#include <iostream>
+
+using json = nlohmann::json;
 
 class Data {
 public:

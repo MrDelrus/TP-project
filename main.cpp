@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
-#include "JsonParser.cpp"
+#include "DataHandler.cpp"
 
 using json = nlohmann::json;
 
@@ -108,12 +108,13 @@ void group_check() {
 }
 
 int main() {
-    json_check();
-    message_check();
-    chat_check();
-    person_check();
-    task_check();
-    group_check();
+    DataHandler::load_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
+    Person Petya1 = Person("Petya1", "1234", type::student);
+    Person Vasya1 = Person("Vasya1", "7622", type::student);
+    Data::name_to_person["Petya1"] = Petya1;
+    Data::name_to_person["Vasya1"] = Vasya1;
+    Vasya1.add_group("2a", 5674);
+    DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
     return 0;
 }
 

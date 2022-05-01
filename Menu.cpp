@@ -28,7 +28,7 @@ private:
                     std::cin >> client_name;
                     std::cout << "Enter your password here\n";
                     std::cin >> client_password;
-                    Person* supposed_person = &Data::name_to_person[client_name];
+                    Person* supposed_person = &(Data::name_to_person[client_name]);
                     if (!supposed_person->check_password(client_password))
                     {
                         while (!supposed_person->check_password(client_password))
@@ -38,7 +38,7 @@ private:
                             std::cin >> client_name;
                             std::cout << "Enter your password here\n";
                             std::cin >> client_password;
-                            supposed_person = &Data::name_to_person[client_name];
+                            supposed_person = &(Data::name_to_person[client_name]);
                         }
                     }
                     current_person = supposed_person;
@@ -69,6 +69,7 @@ private:
                     }
                     current_person = new Person(client_name, client_password, real_role);
                     current_string = "profile " + client_role;
+                    Data::name_to_person[client_name] = *current_person;
                     std::cout << "You have been registered! Now you can use it!";
                     return;
                 }
@@ -339,6 +340,8 @@ private:
                     current_string = "task " + client_role;
                     return;
                 }
+                default:
+                    std::cout << "Bad guy! Wrong number!\n";
             }
         }
     }

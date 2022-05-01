@@ -5,7 +5,7 @@
 
 class Group {
 private:
-    long long id;
+    long long id = 0;
     std::string name;
     std::string tutor_name;
 public:
@@ -59,9 +59,17 @@ public:
                            "\nStudents:\n" + block_students + "\nTasks: " + block_tasks;
     }
     void add_task(const std::string& task_name, const std::string& task_problem, const std::string& student_name) {
+        if (tasks.size() >= 32) {
+            std::cout << "Number of tasks of the group should not be more than 32!\n";
+            return;
+        }
         tasks[task_name] = Task(task_name, task_problem, tutor_name, student_name);
     }
     void add_task(const Task& to_add) {
+        if (tasks.size() >= 32) {
+            std::cout << "Number of tasks of the group should not be more than 32!\n";
+            return;
+        }
         tasks[to_add.get_name()] = to_add;
     }
     Task* get_task(const std::string& task_name) {

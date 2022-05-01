@@ -1,6 +1,6 @@
 #pragma once
 #include <utility>
-
+#include <iostream>
 #include "library.h"
 
 class Person {
@@ -47,6 +47,10 @@ public:
     }
 
     void add_group(const std::string& name_of_group, long long id_of_group) {
+        if (name_to_id_of_groups.size() >= 8) {
+            std::cout << "Your number of groups should not be more than 8!\n";
+            return;
+        }
         name_to_id_of_groups[name_of_group] = id_of_group;
     }
 

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
@@ -80,6 +81,13 @@ public:
         answer.name = origin[0];
         answer.password = origin[1];
         answer.role = origin[2] == "student" ? type::student : type::tutor;
+//        try {
+//            static_cast<std::map<std::string, long long>>(origin[3]);
+//        }
+//        catch (...) { std::cout << "bad in json parser static cast!\n"; }
+        if (origin[3].empty()) {
+            return answer;
+        }
         for (auto& pair : static_cast<std::map<std::string, long long>>(origin[3])) {
             answer.add_group(pair.first, pair.second);
         }

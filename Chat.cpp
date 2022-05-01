@@ -2,29 +2,31 @@
 #pragma once
 #include "library.h"
 
+struct Message {
+    std::string messaging_person;
+    std::string text;
+    Message() = default;
+    Message(const std::string& text_constr, const std::string& person) {
+        messaging_person = person;
+        text = text_constr;
+    }
+    Message(const Message& copy) = default;
+    Message& operator = (Message to_copy) {
+        std::swap(messaging_person, to_copy.messaging_person);
+        std::swap(text, to_copy.text);
+        return (*this);
+    }
+    ~Message() = default;
+};
+
 class Chat {
 private:
-    struct Message {
-        std::string messaging_person;
-        std::string text;
-        Message() = default;
-        Message(const std::string& text_constr, const std::string& person) {
-            messaging_person = person;
-            text = text_constr;
-        }
-        Message(const Message& copy) = default;
-        Message& operator = (Message to_copy) {
-            std::swap(messaging_person, to_copy.messaging_person);
-            std::swap(text, to_copy.text);
-            return (*this);
-        }
-        ~Message() = default;
-    };
-    std::vector<Message> messages;
-    std::string all_chat;
-public:
+// TODO: put all public into private
     std::string chat_name;
+    std::string all_chat;
     std::set<std::string> people_in_chat;
+    std::vector<Message> messages;
+public:
     Chat() = default;
     ~Chat() = default;
     Chat(const Chat& to_copy) = default;
@@ -42,6 +44,9 @@ public:
         people_in_chat = people_in_chat_constr;
         all_chat = "";
     }
+    [[nodiscard]] std::string get_name() const {
+        return chat_name;
+    }
     void Add_Message(const std::string& message, const std::string& messaging_person) {
         Message message_to_add = Message(message, messaging_person);
         messages.push_back(message_to_add);
@@ -53,8 +58,11 @@ public:
     [[nodiscard]] const Message& Get_Message(int number) const {
         return messages[number];
     }
-    std::string get_all_chat() {
+    [[nodiscard]] std::string get_all_chat() const {
         return all_chat;
+    }
+    [[nodiscard]] size_t get_size() const {
+        return messages.size();
     }
     std::string get_last_n_messages(int number) {
         std::string ans;
@@ -66,4 +74,6 @@ public:
         }
         return ans;
     }
+
+    friend class ChatParser;
 };

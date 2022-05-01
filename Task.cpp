@@ -5,7 +5,7 @@
 
 class Task {
 private:
-    bool is_open;
+    bool is_open = true;
     std::string name;
     std::string problem;
     std::string tutor;
@@ -20,7 +20,9 @@ public:
     Task(const Task& copy) = default;
     Task& operator= (const Task& copy) = default;
     ~Task() = default;
-
+    std::string get_name() const {
+        return name;
+    }
     std::string get_info() {
         return "Task: " + name + "\nTutor: " + tutor + "\nStudent: " + student + "\nProblem:\n" + problem;
     }
@@ -33,4 +35,5 @@ public:
     void close() {
         is_open = false;
     }
+    friend class TaskParser;
 };

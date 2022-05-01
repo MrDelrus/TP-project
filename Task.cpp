@@ -35,5 +35,5 @@ public:
     void close() {
         is_open = false;
     }
-    friend class TaskDataHandler;
+    friend class TaskParser;
 };

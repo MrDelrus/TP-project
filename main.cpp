@@ -37,7 +37,7 @@ void json_check() {
 }
 
 void message_check() {
-    MessageArrayDataHandler mdh = MessageArrayDataHandler();
+    MessageArrayParser mdh = MessageArrayParser();
     Message m1 = Message("Petya", "Hello from Petya!");
     Message m2 = Message("Vasya", "Hello from Vasya!");
     mdh.add_message_to_json(m1);
@@ -56,7 +56,7 @@ void chat_check() {
     Chat chat1 = Chat("Petya and Vasya", people_in_chat);
     chat1.Add_Message("Hello", "Vasya");
     chat1.Add_Message("Hello from Petya!", "Petya");
-    json chat_json1 = ChatDataHandler::get_json_from_chat(chat1);
+    json chat_json1 = ChatParser::get_json_from_chat(chat1);
     std::cout << chat_json1 << "\n";
 }
 
@@ -64,9 +64,9 @@ void person_check() {
     Person Petya = Person("Petya", "1234", type::student);
     Person Vasya = Person("Vasya", "7622", type::student);
     Vasya.add_group("2a", 5674);
-    json Vasya_json = PersonDataHandler::get_json_from_person(Vasya);
+    json Vasya_json = PersonParser::get_json_from_person(Vasya);
     std::cout << Vasya_json << "\n";
-    Person Vasya_clone = PersonDataHandler::get_person_from_json(Vasya_json);
+    Person Vasya_clone = PersonParser::get_person_from_json(Vasya_json);
     std::cout << Vasya_clone.get_name() << " " << Vasya_clone.get_password() << " " << Vasya_clone.get_groups() <<
     " " << Vasya_clone.name_to_id_of_groups["2a"] << "\n";
 }
@@ -83,7 +83,7 @@ void task_check() {
     task1.change_problem("Given a and b. Find a + b + a * b");
     Chat* discussion = task1.get_discussion();
     (*discussion) = chat1;
-    json task1_json = TaskDataHandler::get_json_from_task(task1);
+    json task1_json = TaskParser::get_json_from_task(task1);
     std::cout << task1_json << "\n";
 }
 
@@ -101,13 +101,18 @@ void group_check() {
     (*discussion) = chat1;
     Group main_group = Group("2a", "Bogdanov", people_in_chat, 897648);
     main_group.add_task(task1);
-    json group_json = GroupDataHandler::get_json_from_group(main_group);
-    Group main_group_clone = GroupDataHandler::get_group_from_json(group_json);
+    json group_json = GroupParser::get_json_from_group(main_group);
+    Group main_group_clone = GroupParser::get_group_from_json(group_json);
     std::cout << main_group_clone.get_info() << "\n";
     std::cout << "Json view:\n" << group_json << "\n";
 }
 
 int main() {
+    json_check();
+    message_check();
+    chat_check();
+    person_check();
+    task_check();
     group_check();
     return 0;
 }

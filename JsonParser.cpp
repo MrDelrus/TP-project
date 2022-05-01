@@ -12,42 +12,36 @@ using json = nlohmann::json;
 // 4) TaskDataHandler
 // 5) GroupDataHandler
 
-class DataHandler {
+class MessageArrayParser {
 private:
     json main_json_file;
 public:
-    [[nodiscard]] json get_json() const {
+    json get_json() {
         return main_json_file;
     }
     json& set_json() {
         return main_json_file;
     }
-};
-
-class MessageArrayDataHandler : public DataHandler {
-private:
-public:
     void add_message_to_json(const Message& message) {
-        set_json().push_back({message.messaging_person, message.text});
+        main_json_file.push_back({message.messaging_person, message.text});
     }
     std::vector<Message> get_messages() {
         std::vector<Message> answer = std::vector<Message>();
-        json current_json = get_json();
-        for (auto& i : current_json) {
+        for (auto& i : main_json_file) {
             answer.emplace_back(i[0], i[1]);
         }
         return answer;
     }
 };
 
-class ChatDataHandler {
+class ChatParser {
 public:
     static json get_json_from_chat(const Chat& chat) { //chat_name, all_chat, string[] people_in_chat, Message[] messages
         json answer = json();
         answer.push_back(chat.chat_name);
         answer.push_back(chat.get_all_chat());
         answer.push_back(chat.people_in_chat);
-        MessageArrayDataHandler helper;
+        MessageArrayParser helper;
         for (int i = 0; i < chat.get_size(); ++i) {
             helper.add_message_to_json(chat.Get_Message(i));
         }
@@ -59,14 +53,14 @@ public:
         answer.chat_name = origin[0];
         answer.all_chat = origin[1];
         answer.people_in_chat = std::set<std::string>(origin[2].begin(), origin[2].end());
-        MessageArrayDataHandler helper;
+        MessageArrayParser helper;
         helper.set_json() = origin[3];
         answer.messages = helper.get_messages();
         return answer;
     }
 };
 
-class PersonDataHandler {
+class PersonParser {
 public:
     static json get_json_from_person(const Person& person) {
         json answer;
@@ -93,7 +87,7 @@ public:
     }
 };
 
-class TaskDataHandler {
+class TaskParser {
 public:
     static json get_json_from_task(const Task& task) {
         json answer;
@@ -102,7 +96,7 @@ public:
         answer.push_back(task.problem);
         answer.push_back(task.tutor);
         answer.push_back(task.student);
-        answer.push_back(ChatDataHandler::get_json_from_chat(task.discussion));
+        answer.push_back(ChatParser::get_json_from_chat(task.discussion));
         return answer;
     }
     static Task get_task_from_json(const json& origin) {
@@ -112,12 +106,12 @@ public:
         answer.problem = origin[2];
         answer.tutor = origin[3];
         answer.student = origin[4];
-        answer.discussion = ChatDataHandler::get_chat_from_json(origin[5]);
+        answer.discussion = ChatParser::get_chat_from_json(origin[5]);
         return answer;
     }
 };
 
-class GroupDataHandler {
+class GroupParser {
 public:
     static json get_json_from_group(const Group& group) {
         json answer;
@@ -131,7 +125,7 @@ public:
         answer.push_back(student_names);
         json tasks;
         for (auto& pair : group.tasks) {
-            tasks[pair.first] = TaskDataHandler::get_json_from_task(pair.second);
+            tasks[pair.first] = TaskParser::get_json_from_task(pair.second);
         }
         answer.push_back(tasks);
         return answer;
@@ -145,7 +139,7 @@ public:
             answer.students_names.insert(item);
         }
         for (json::iterator it = origin[4].begin(); it != origin[4].end(); ++it) {
-            answer.tasks[it.key()] = TaskDataHandler::get_task_from_json(it.value());
+            answer.tasks[it.key()] = TaskParser::get_task_from_json(it.value());
         }
         return answer;
     }

@@ -50,5 +50,5 @@ public:
         name_to_id_of_groups[name_of_group] = id_of_group;
     }
 
-    friend class PersonDataHandler;
+    friend class PersonParser;
 };

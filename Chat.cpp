@@ -75,5 +75,5 @@ public:
         return ans;
     }
 
-    friend class ChatDataHandler;
+    friend class ChatParser;
 };

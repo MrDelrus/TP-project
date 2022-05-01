@@ -80,5 +80,5 @@ public:
         students_names.insert(student_name);
     }
 
-    friend class GroupDataHandler;
+    friend class GroupParser;
 };

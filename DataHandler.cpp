@@ -10,15 +10,15 @@ public:
         for (auto& pair : (Data::name_to_person)) {
             name_to_person_json[pair.first] = PersonParser::get_json_from_person(pair.second);
         }
-        json id_to_group_json;
-        for (auto& pair: (Data::id_to_group)) {
-            id_to_group_json[pair.first] = GroupParser::get_json_from_group(pair.second);
+        json name_to_group_json;
+        for (auto& pair: (Data::name_to_group)) {
+            name_to_group_json[pair.first] = GroupParser::get_json_from_group(pair.second);
         }
         storage.push_back(name_to_person_json);
-        storage.push_back(id_to_group_json);
+        storage.push_back(name_to_group_json);
         std::ofstream file;
         file.open(file_name);
-        file << storage;
+        file << storage.dump(4);
         file.close();
         return file_name;
     }
@@ -41,13 +41,13 @@ public:
         json storage = json::parse(storage_string);
         // std::cout << storage << "\n";
         Data::name_to_person = std::map<std::string, Person>();
-        Data::id_to_group = std::map<long long, Group>();
+        Data::name_to_group = std::map<std::string, Group>();
         for (json::iterator it = storage[0].begin(); it != storage[0].end(); ++it) {
             Data::name_to_person[it.key()] = PersonParser::get_person_from_json(it.value());
             //answer.tasks[it.key()] = TaskParser::get_task_from_json(it.value());
         }
         for (json::iterator it = storage[1].begin(); it != storage[1].end(); ++it) {
-            Data::id_to_group[std::stol(it.key())] = GroupParser::get_group_from_json(it.value());
+            Data::name_to_group[it.key()] = GroupParser::get_group_from_json(it.value());
         }
     }
 };

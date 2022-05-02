@@ -1,1 +1,84 @@
-[{"Petya":["Petya","1234","student",null],"Petya1":["Petya1","1234","student",null],"Vasya":["Vasya","7622","student",null],"Vasya1":["Vasya1","7622","student",null]},null]
+[
+    {
+        "Petya2": [
+            "Petya2",
+            "1234",
+            "student",
+            [
+                "Math",
+                "Math2"
+            ]
+        ],
+        "Petya3": [
+            "Petya3",
+            "1234",
+            "student",
+            [
+                "Math",
+                "Math2"
+            ]
+        ],
+        "Sergey": [
+            "Sergey",
+            "ser1",
+            "tutor",
+            [
+                "Math2"
+            ]
+        ],
+        "Vasya2": [
+            "Vasya2",
+            "7622",
+            "student",
+            [
+                "Math",
+                "Math2"
+            ]
+        ],
+        "Vasya3": [
+            "Vasya3",
+            "7622",
+            "student",
+            [
+                "Math"
+            ]
+        ]
+    },
+    {
+        "Math": [
+            "Math",
+            "Sergey",
+            [
+                "Petya2",
+                "Petya3",
+                "Vasya2",
+                "Vasya3"
+            ],
+            null
+        ],
+        "Math2": [
+            "Math2",
+            "Sergey",
+            [
+                "Petya2",
+                "Petya3",
+                "Vasya2"
+            ],
+            {
+                "a+b": [
+                    true,
+                    "a+b",
+                    "Givenab.Finda+b",
+                    "Sergey",
+                    "Petya3",
+                    [
+                        "",
+                        "",
+                        [],
+                        null
+                    ]
+                ]
+            }
+        ]
+    }
+]

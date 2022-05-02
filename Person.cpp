@@ -9,14 +9,16 @@ private:
     std::string password;
     type role;
 public:
-    std::map<std::string, long long> name_to_id_of_groups;
+    std::set<std::string> groups_names;
+    //std::map<std::string, long long> name_to_id_of_groups;
     Person() {
         name = "";
         password = "";
         role = type::student;
     }
     Person(std::string name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {
-        name_to_id_of_groups = std::map<std::string, long long>(); 
+        //name_to_id_of_groups = std::map<std::string, long long>();
+        groups_names = std::set<std::string>();
     }
     Person(const Person& copy) = default;
     Person& operator = (const Person& copy) = default;
@@ -40,18 +42,22 @@ public:
 
     std::string get_groups() {
         std::string answer;
-        for (const auto& p: name_to_id_of_groups) {
-            answer += p.first + "\n";
+        for (const auto& p: groups_names) {
+            answer += p + "\n";
         }
         return answer;
     }
 
-    void add_group(const std::string& name_of_group, long long id_of_group) {
-        if (name_to_id_of_groups.size() >= 8) {
+    void add_group(const std::string& name_of_group) {
+        if (groups_names.size() >= 8) {
             std::cout << "Your number of groups should not be more than 8!\n";
             return;
         }
-        name_to_id_of_groups[name_of_group] = id_of_group;
+        if (groups_names.find(name_of_group) != groups_names.end()) {
+            std::cout << "this group exists!\n";
+            return;
+        }
+        groups_names.insert(name_of_group);
     }
 
     friend class PersonParser;

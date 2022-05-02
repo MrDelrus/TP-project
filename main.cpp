@@ -114,8 +114,8 @@ int main() {
 //    Data::name_to_person["Petya1"] = Petya1;
 //    Data::name_to_person["Vasya1"] = Vasya1;
 //    Vasya1.add_group("2a", 5674);
-    Menu main_menu = Menu();
-    main_menu.basic_menu();
+    //Menu main_menu = Menu();
+    //main_menu.basic_menu();
     DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
     return 0;
 }

@@ -40,8 +40,8 @@ public:
         }
         json storage = json::parse(storage_string);
         // std::cout << storage << "\n";
-        Data::name_to_person = std::map<std::string, Person>();
-        Data::name_to_group = std::map<std::string, Group>();
+//        Data::name_to_person = std::map<std::string, Person>();
+//        Data::name_to_group = std::map<std::string, Group>();
         for (json::iterator it = storage[0].begin(); it != storage[0].end(); ++it) {
             Data::name_to_person[it.key()] = PersonParser::get_person_from_json(it.value());
             //answer.tasks[it.key()] = TaskParser::get_task_from_json(it.value());

@@ -19,7 +19,7 @@ private:
     void Main_menu() {
         int option;
         while (true) {
-            std::cout << "You can:\n1) sign in\n2) sign up\n";
+            std::cout << "You can:\n1) sign in\n2) sign up\n3) exit\n";
             std::cin >> option;
             switch (option) {
                 case 1: {
@@ -28,7 +28,7 @@ private:
                     std::cin >> client_name;
                     std::cout << "Enter your password here\n";
                     std::cin >> client_password;
-                    Person* supposed_person = &Data::name_to_person[client_name];
+                    Person* supposed_person = &(Data::name_to_person[client_name]);
                     if (!supposed_person->check_password(client_password))
                     {
                         while (!supposed_person->check_password(client_password))
@@ -38,7 +38,7 @@ private:
                             std::cin >> client_name;
                             std::cout << "Enter your password here\n";
                             std::cin >> client_password;
-                            supposed_person = &Data::name_to_person[client_name];
+                            supposed_person = &(Data::name_to_person[client_name]);
                         }
                     }
                     current_person = supposed_person;
@@ -69,7 +69,12 @@ private:
                     }
                     current_person = new Person(client_name, client_password, real_role);
                     current_string = "profile " + client_role;
+                    Data::name_to_person[client_name] = *current_person;
                     std::cout << "You have been registered! Now you can use it!";
+                    return;
+                }
+                case 3: {
+                    current_string = "exit";
                     return;
                 }
                 default: {
@@ -95,7 +100,7 @@ private:
                     std::cout << "Enter group name\n";
                     std::string group_name;
                     std::cin >> group_name;
-                    current_group = &(Data::id_to_group[current_person->name_to_id_of_groups[group_name]]);
+                    current_group = &(Data::name_to_group[group_name]);
                     std::string client_role = current_person->get_role() == type::student ? "student" : "tutor";
                     current_string = "group " + client_role;
                     return;
@@ -111,7 +116,6 @@ private:
                     int number_of_students;
                     std::cin >> number_of_students;
                     std::set<std::string> students_names = std::set<std::string>();
-                    long long id = std::rand();
                     for (int i = 0; i < number_of_students; ++i) {
                         std::cin >> helper;
                         if (Data::name_to_person.find(helper) == Data::name_to_person.end()) {
@@ -119,18 +123,18 @@ private:
                         }
                         else {
                             students_names.insert(helper);
-                            Data::name_to_person[helper].add_group(group_name, id);
+                            Data::name_to_person[helper].add_group(group_name);
                         }
                     }
-                    current_person->add_group(group_name, id);
-                    Group new_group (group_name, current_person->get_name(), students_names, id);
-                    Data::id_to_group[id] = new_group;
+                    current_person->add_group(group_name);
+                    Group new_group (group_name, current_person->get_name(), students_names);
+                    Data::name_to_group[group_name] = new_group;
                     std::cout << "New group was made successfully!\n";
                     break;
                 }
                 case 4: {
+                    std::string client_role = current_person->get_role() == type::student ? "student" : "tutor";\
                     current_person = nullptr;
-                    std::string client_role = current_person->get_role() == type::student ? "student" : "tutor";
                     current_string = "main " + client_role;
                     std::cout << "You returned back\n";
                     return;
@@ -221,6 +225,7 @@ private:
                     break;
                 }
                 case 3: {
+                    std::cout << "Enter task name\n";
                     std::string name;
                     std::cin >> name;
                     current_task = current_group->get_task(name);
@@ -255,13 +260,13 @@ private:
                     }
                     else {
                         current_group->add_student(student_name);
-                        Data::name_to_person[student_name].add_group(current_group->get_name(), current_group->get_id());
+                        Data::name_to_person[student_name].add_group(current_group->get_name());
                         std::cout << "The student was added successfully\n";
                     }
                     break;
                 }
                 case 6: {
-                    current_string = "group tutor";
+                    current_string = "profile tutor";
                     current_group = nullptr;
                     current_task = nullptr;
                     current_chat = nullptr;
@@ -339,6 +344,8 @@ private:
                     current_string = "task " + client_role;
                     return;
                 }
+                default:
+                    std::cout << "Bad guy! Wrong number!\n";
             }
         }
     }
@@ -354,12 +361,15 @@ public:
     void basic_menu() {
         while (true)
         {
+            if (current_string == "exit") {
+                return;
+            }
             if (current_string == "profile student" or current_string == "profile tutor")
             {
                 Profile_menu();
             }
             else {
-                if (current_string == "main student" or "main tutor")
+                if (current_string == "main student" or current_string == "main tutor")
                 {
                     Main_menu();
                 }
@@ -373,7 +383,6 @@ public:
                         {
                             Group_menu_for_tutor();
                         }
-                        
                         else {
                             if (current_string == "task student")
                             {

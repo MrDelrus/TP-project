@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <map>
-#include "JsonParser.cpp"
+#include "DataHandler.cpp"
 
 using json = nlohmann::json;
 
@@ -63,12 +63,12 @@ void chat_check() {
 void person_check() {
     Person Petya = Person("Petya", "1234", type::student);
     Person Vasya = Person("Vasya", "7622", type::student);
-    Vasya.add_group("2a", 5674);
+    Vasya.add_group("2a");
     json Vasya_json = PersonParser::get_json_from_person(Vasya);
     std::cout << Vasya_json << "\n";
     Person Vasya_clone = PersonParser::get_person_from_json(Vasya_json);
     std::cout << Vasya_clone.get_name() << " " << Vasya_clone.get_password() << " " << Vasya_clone.get_groups() <<
-    " " << Vasya_clone.name_to_id_of_groups["2a"] << "\n";
+    " " << "\n";
 }
 
 void task_check() {
@@ -99,7 +99,7 @@ void group_check() {
     task1.change_problem("Given a and b. Find a + b + a * b");
     Chat* discussion = task1.get_discussion();
     (*discussion) = chat1;
-    Group main_group = Group("2a", "Bogdanov", people_in_chat, 897648);
+    Group main_group = Group("2a", "Bogdanov", people_in_chat);
     main_group.add_task(task1);
     json group_json = GroupParser::get_json_from_group(main_group);
     Group main_group_clone = GroupParser::get_group_from_json(group_json);
@@ -108,12 +108,15 @@ void group_check() {
 }
 
 int main() {
-    json_check();
-    message_check();
-    chat_check();
-    person_check();
-    task_check();
-    group_check();
+    DataHandler::load_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
+//    Person Petya1 = Person("Petya1", "1234", type::student);
+//    Person Vasya1 = Person("Vasya1", "7622", type::student);
+//    Data::name_to_person["Petya1"] = Petya1;
+//    Data::name_to_person["Vasya1"] = Vasya1;
+//    Vasya1.add_group("2a", 5674);
+    //Menu main_menu = Menu();
+    //main_menu.basic_menu();
+    DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
     return 0;
 }
 

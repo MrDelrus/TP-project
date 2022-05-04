@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
@@ -68,11 +69,15 @@ public:
         answer.push_back(person.get_password());
         std::string role = person.get_role() == type::student ? "student" : "tutor";
         answer.push_back(role);
-        json map_name_group_id;
-        for (auto& pair: person.name_to_id_of_groups) {
-            map_name_group_id[pair.first] = pair.second;
+        json set_of_groups_name;
+        for (auto& item : person.groups_names) {
+            set_of_groups_name.push_back(item);
         }
-        answer.push_back(map_name_group_id);
+//        json map_name_group_id;
+//        for (auto& pair: person.name_to_id_of_groups) {
+//            map_name_group_id[pair.first] = pair.second;
+//        }
+        answer.push_back(set_of_groups_name);
         return answer;
     }
     static Person get_person_from_json(const json& origin) {
@@ -80,8 +85,15 @@ public:
         answer.name = origin[0];
         answer.password = origin[1];
         answer.role = origin[2] == "student" ? type::student : type::tutor;
-        for (auto& pair : static_cast<std::map<std::string, long long>>(origin[3])) {
-            answer.add_group(pair.first, pair.second);
+//        try {
+//            static_cast<std::map<std::string, long long>>(origin[3]);
+//        }
+//        catch (...) { std::cout << "bad in json parser static cast!\n"; }
+        if (origin[3].empty()) {
+            return answer;
+        }
+        for (auto& pair : static_cast<std::set<std::string>>(origin[3])) {
+            answer.add_group(pair);
         }
         return answer;
     }
@@ -115,7 +127,7 @@ class GroupParser {
 public:
     static json get_json_from_group(const Group& group) {
         json answer;
-        answer.push_back(group.id);
+//        answer.push_back(group.id);
         answer.push_back(group.name);
         answer.push_back(group.tutor_name);
         json student_names;
@@ -132,13 +144,13 @@ public:
     }
     static Group get_group_from_json(json& origin) {
         Group answer = Group();
-        answer.id = origin[0];
-        answer.name = origin[1];
-        answer.tutor_name = origin[2];
-        for (auto& item : origin[3]) {
+//        answer.id = origin[0];
+        answer.name = origin[0];
+        answer.tutor_name = origin[1];
+        for (auto& item : origin[2]) {
             answer.students_names.insert(item);
         }
-        for (json::iterator it = origin[4].begin(); it != origin[4].end(); ++it) {
+        for (json::iterator it = origin[3].begin(); it != origin[3].end(); ++it) {
             answer.tasks[it.key()] = TaskParser::get_task_from_json(it.value());
         }
         return answer;

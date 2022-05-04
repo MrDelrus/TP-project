@@ -5,7 +5,6 @@
 
 class Group {
 private:
-    long long id;
     std::string name;
     std::string tutor_name;
 public:
@@ -17,17 +16,6 @@ public:
         name = std::move(name_c);
         tutor_name = std::move(tutor_name_c);
         students_names = std::move(students_names_c);
-        id = 0;
-        try {
-            id = std::rand();
-        }
-        catch (const std::exception& e) {}
-    }
-    Group(std::string name_c, std::string tutor_name_c, std::set<std::string> students_names_c, long long id_c) {
-        name = std::move(name_c);
-        tutor_name = std::move(tutor_name_c);
-        students_names = std::move(students_names_c);
-        id = id_c;
     }
     Group(const Group& copy) = default;
     Group& operator = (const Group& copy) = default;
@@ -35,10 +23,6 @@ public:
 
     std::string get_name() {
         return name;
-    }
-
-    long long get_id() {
-        return id;
     }
     std::string get_info() {
         std::string block_students;
@@ -59,9 +43,17 @@ public:
                            "\nStudents:\n" + block_students + "\nTasks: " + block_tasks;
     }
     void add_task(const std::string& task_name, const std::string& task_problem, const std::string& student_name) {
+        if (tasks.size() >= 32) {
+            std::cout << "Number of tasks of the group should not be more than 32!\n";
+            return;
+        }
         tasks[task_name] = Task(task_name, task_problem, tutor_name, student_name);
     }
     void add_task(const Task& to_add) {
+        if (tasks.size() >= 32) {
+            std::cout << "Number of tasks of the group should not be more than 32!\n";
+            return;
+        }
         tasks[to_add.get_name()] = to_add;
     }
     Task* get_task(const std::string& task_name) {

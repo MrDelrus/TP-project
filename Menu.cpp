@@ -367,47 +367,40 @@ public:
             if (current_string == "profile student" or current_string == "profile tutor")
             {
                 Profile_menu();
+                continue;
             }
-            else {
-                if (current_string == "main student" or current_string == "main tutor")
-                {
-                    Main_menu();
-                }
-                else {
-                    if (current_string == "group student")
-                    {
-                        Group_menu_for_student();
-                    }
-                    else {
-                        if (current_string == "group tutor")
-                        {
-                            Group_menu_for_tutor();
-                        }
-                        else {
-                            if (current_string == "task student")
-                            {
-                                Task_menu_for_student();
-                            }
-                            else {
-                                if (current_string == "task tutor")
-                                {
-                                    Task_menu_for_tutor();
-                                }
-                                else {
-                                    if (current_string == "chat tutor" or current_string == "chat student")
-                                    {
-                                        Chat_menu();
-                                    }
-                                    else {
-                                        std::cout << "Something went wrong in base menu";
-                                        return;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (current_string == "main student" or current_string == "main tutor")
+            {
+                Main_menu();
+                continue;
             }
+            if (current_string == "group student")
+            {
+                Group_menu_for_student();
+                continue;
+            }
+            if (current_string == "group tutor")
+            {
+                Group_menu_for_tutor();
+                continue;
+            }
+            if (current_string == "task student")
+            {
+                Task_menu_for_student();
+                continue;
+            }
+            if (current_string == "task tutor")
+            {
+                Task_menu_for_tutor();
+                continue;
+            }
+            if (current_string == "chat tutor" or current_string == "chat student")
+            {
+                Chat_menu();
+                continue;
+            }
+            std::cout << "Something went wrong in base menu";
+            return;
         }
     }
 };

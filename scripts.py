@@ -17,7 +17,6 @@ def GET_GROUPS(login):
 def ADD_GROUP(login, name):
     pass
 
-
 def ENTER_GROUP(group_name):
     pass
 

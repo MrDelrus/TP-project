@@ -47,7 +47,7 @@ public:
     [[nodiscard]] std::string get_name() const {
         return chat_name;
     }
-    void Add_Message(const std::string& message, const std::string& messaging_person) {
+    void add_message (const std::string& message, const std::string& messaging_person) {
         Message message_to_add = Message(message, messaging_person);
         messages.push_back(message_to_add);
         all_chat += messaging_person + ": " + message + "\n\n";
@@ -70,7 +70,7 @@ public:
             return all_chat;
         }
         for (int i = static_cast<int>(messages.size()) - number; i < messages.size(); ++i) {
-            ans += messages[i].messaging_person + ": " + messages[i].text + "\n\n";
+            ans += messages[i].messaging_person + ": " + messages[i].text + "\n";
         }
         return ans;
     }

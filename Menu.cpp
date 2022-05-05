@@ -335,7 +335,7 @@ private:
                     std::cout << "Print message below\n";
                     std::string message;
                     std::cin >> message;
-                    current_chat->Add_Message(message, current_person->get_name());
+                    current_chat->add_message(message, current_person->get_name());
                     break;
                 }
                 case 4: {

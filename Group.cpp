@@ -42,6 +42,20 @@ public:
         return "Group's name: " + name + "\nTutor's name: " + tutor_name +
                            "\nStudents:\n" + block_students + "\nTasks: " + block_tasks;
     }
+    std::string get_students_names() {
+        std::string answer;
+        for (auto& item : students_names) {
+            answer += (item + "\n");
+        }
+        return answer;
+    }
+    std::string get_tasks_names() {
+        std::string answer;
+        for (auto& pair : tasks) {
+            answer += pair.first + "\n";
+        }
+        return answer;
+    }
     void add_task(const std::string& task_name, const std::string& task_problem, const std::string& student_name) {
         if (tasks.size() >= 32) {
             std::cout << "Number of tasks of the group should not be more than 32!\n";

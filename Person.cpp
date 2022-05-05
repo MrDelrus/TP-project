@@ -8,8 +8,8 @@ private:
     std::string name;
     std::string password;
     type role;
-public:
     std::set<std::string> groups_names;
+public:
     //std::map<std::string, long long> name_to_id_of_groups;
     Person() {
         name = "";
@@ -24,7 +24,9 @@ public:
     Person(const Person& copy) = default;
     Person& operator = (const Person& copy) = default;
     ~Person() = default;
-
+    std::set<std::string>& set_groups_names() {
+        return groups_names;
+    }
     [[nodiscard]] const std::string& get_name() const {
         return name;
     }

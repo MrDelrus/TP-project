@@ -12,7 +12,6 @@ class Server {
 private:
     int main_port;
     int number_of_clients_in_listening_queue;
-    Menu main_menu;
 //    query_converter["SIGN_UP"] = 0;
 //    query_converter["SIGN_IN"] = 1;
 //    query_converter["IS_TUTOR"] = 2;
@@ -110,7 +109,7 @@ private:
                 if (!check_if_person_exists(query[1])) {
                     return "False";
                 }
-                return Data::name_to_group[query[2]].tasks[query[3]].get_problem_text();
+                return Data::name_to_group[query[2]].set_tasks()[query[3]].get_problem_text();
             }
             case 11: {
                 if (!check_if_person_exists(query[1])) {
@@ -128,10 +127,9 @@ private:
         }
     }
 public:
-    Server(int main_port_c, int number_of_clients_in_listening_queue_c, const Menu& menu_c) {
+    Server(int main_port_c, int number_of_clients_in_listening_queue_c) {
         main_port = main_port_c;
         number_of_clients_in_listening_queue = number_of_clients_in_listening_queue_c;
-        main_menu = menu_c;
     }
     Server(const Server& to_copy) = delete;
     ~Server() = default;
@@ -210,11 +208,3 @@ public:
         close(client_socket);
     }
 };
-
-int main(int argc, char* argv[]) {
-    if (argc < 2) {
-        throw std::runtime_error("ERROR, no port provided!");
-    }
-
-    return 0;
-}

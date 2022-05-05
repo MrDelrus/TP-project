@@ -53,8 +53,8 @@ void chat_check() {
     people_in_chat.insert("Petya");
     people_in_chat.insert("Vasya");
     Chat chat1 = Chat("Petya and Vasya", people_in_chat);
-    chat1.Add_Message("Hello", "Vasya");
-    chat1.Add_Message("Hello from Petya!", "Petya");
+    chat1.add_message("Hello", "Vasya");
+    chat1.add_message("Hello from Petya!", "Petya");
     json chat_json1 = ChatParser::get_json_from_chat(chat1);
     std::cout << chat_json1 << "\n";
 }
@@ -76,8 +76,8 @@ void task_check() {
     people_in_chat.insert("Petya");
     people_in_chat.insert("Vasya");
     Chat chat1 = Chat("Petya and Vasya", people_in_chat);
-    chat1.Add_Message("Hello", "Vasya");
-    chat1.Add_Message("Hello from Petya!", "Petya");
+    chat1.add_message("Hello", "Vasya");
+    chat1.add_message("Hello from Petya!", "Petya");
     Task task1 = Task("Task TP 25", problem, "Bogdanov", "Zolin");
     task1.change_problem("Given a and b. Find a + b + a * b");
     Chat* discussion = task1.get_discussion();
@@ -92,8 +92,8 @@ void group_check() {
     people_in_chat.insert("Petya");
     people_in_chat.insert("Vasya");
     Chat chat1 = Chat("Petya and Vasya", people_in_chat);
-    chat1.Add_Message("Hello", "Vasya");
-    chat1.Add_Message("Hello from Petya!", "Petya");
+    chat1.add_message("Hello", "Vasya");
+    chat1.add_message("Hello from Petya!", "Petya");
     Task task1 = Task("Task TP 25", problem, "Bogdanov", "Zolin");
     task1.change_problem("Given a and b. Find a + b + a * b");
     Chat* discussion = task1.get_discussion();
@@ -113,8 +113,8 @@ int main() {
 //    Data::name_to_person["Petya1"] = Petya1;
 //    Data::name_to_person["Vasya1"] = Vasya1;
 //    Vasya1.add_group("2a", 5674);
-    Menu main_menu = Menu();
-    main_menu.basic_menu();
+    Server main_server (8080, 5);
+    main_server.run();
     DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
     return 0;
 }

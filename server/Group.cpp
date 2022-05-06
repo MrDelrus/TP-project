@@ -7,10 +7,9 @@ class Group {
 private:
     std::string name;
     std::string tutor_name;
-public:
     std::set<std::string> students_names;
     std::map<std::string, Task> tasks;
-
+public:
     Group() = default; // TODO: смотря как ты хочешь заполнять группу и работать с id
     Group(std::string name_c, std::string tutor_name_c, std::set<std::string> students_names_c) {
         name = std::move(name_c);
@@ -23,6 +22,12 @@ public:
 
     std::string get_name() {
         return name;
+    }
+    std::set<std::string>& set_students_names() {
+        return students_names;
+    }
+    std::map<std::string, Task>& set_tasks() {
+        return tasks;
     }
     std::string get_info() {
         std::string block_students;
@@ -41,6 +46,20 @@ public:
         }
         return "Group's name: " + name + "\nTutor's name: " + tutor_name +
                            "\nStudents:\n" + block_students + "\nTasks: " + block_tasks;
+    }
+    std::string get_students_names() {
+        std::string answer;
+        for (auto& item : students_names) {
+            answer += (item + "\n");
+        }
+        return answer;
+    }
+    std::string get_tasks_names() {
+        std::string answer;
+        for (auto& pair : tasks) {
+            answer += pair.first + "\n";
+        }
+        return answer;
     }
     void add_task(const std::string& task_name, const std::string& task_problem, const std::string& student_name) {
         if (tasks.size() >= 32) {

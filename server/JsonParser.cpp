@@ -2,7 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "json.hpp"
-#include "Menu.cpp"
+#include "Data.cpp"
 
 using json = nlohmann::json;
 
@@ -44,7 +44,7 @@ public:
         answer.push_back(chat.people_in_chat);
         MessageArrayParser helper;
         for (int i = 0; i < chat.get_size(); ++i) {
-            helper.add_message_to_json(chat.Get_Message(i));
+            helper.add_message_to_json(chat.messages[i]);
         }
         answer.push_back(helper.get_json());
         return answer;

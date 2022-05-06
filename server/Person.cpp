@@ -8,22 +8,25 @@ private:
     std::string name;
     std::string password;
     type role;
-public:
     std::set<std::string> groups_names;
+public:
     //std::map<std::string, long long> name_to_id_of_groups;
     Person() {
         name = "";
         password = "";
         role = type::student;
     }
-    Person(std::string name, std::string  password, const type& role) : name(std::move(name)), password(std::move(password)), role(role) {
+    Person(std::string name, std::string  password, const type& role) : password(std::move(password)), role(role) {
         //name_to_id_of_groups = std::map<std::string, long long>();
+        name = std::move(name);
         groups_names = std::set<std::string>();
     }
     Person(const Person& copy) = default;
     Person& operator = (const Person& copy) = default;
     ~Person() = default;
-
+    std::set<std::string>& set_groups_names() {
+        return groups_names;
+    }
     [[nodiscard]] const std::string& get_name() const {
         return name;
     }

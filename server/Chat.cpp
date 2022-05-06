@@ -1,12 +1,19 @@
 // glhf
 #pragma once
 #include "library.h"
+#include <ctime>
 
 struct Message {
     std::string messaging_person;
     std::string text;
-    Message() = default;
+    std::time_t sending_time;
+    Message() {
+        messaging_person = "";
+        text = "";
+        sending_time = std::time(nullptr);
+    }
     Message(const std::string& text_constr, const std::string& person) {
+        sending_time = std::time(nullptr);
         messaging_person = person;
         text = text_constr;
     }
@@ -47,16 +54,13 @@ public:
     [[nodiscard]] std::string get_name() const {
         return chat_name;
     }
-    void Add_Message(const std::string& message, const std::string& messaging_person) {
+    void add_message (const std::string& message, const std::string& messaging_person) {
         Message message_to_add = Message(message, messaging_person);
         messages.push_back(message_to_add);
         all_chat += messaging_person + ": " + message + "\n\n";
     };
-    Message& Get_Message(int number) {
-        return messages[number];
-    }
-    [[nodiscard]] const Message& Get_Message(int number) const {
-        return messages[number];
+    [[nodiscard]] std::pair<std::string, std::string> get_message(int number) const {
+        return std::make_pair(messages[number].text, messages[number].messaging_person);
     }
     [[nodiscard]] std::string get_all_chat() const {
         return all_chat;
@@ -70,7 +74,7 @@ public:
             return all_chat;
         }
         for (int i = static_cast<int>(messages.size()) - number; i < messages.size(); ++i) {
-            ans += messages[i].messaging_person + ": " + messages[i].text + "\n\n";
+            ans += messages[i].messaging_person + ": " + messages[i].text + "\n";
         }
         return ans;
     }

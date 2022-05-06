@@ -11,7 +11,6 @@ private:
     std::string tutor;
     std::string student;
     Chat discussion;
-    
 public:
     Task(std::string name, std::string problem, const std::string& tutor_name, const std::string& student_name):
             is_open(true), name(std::move(name)), problem(std::move(problem)), tutor(tutor_name), student(student_name),
@@ -28,6 +27,9 @@ public:
     }
     void change_problem(const std::string& new_problem) {
         problem = new_problem;
+    }
+    std::string get_problem_text() {
+        return problem;
     }
     Chat* get_discussion() {
         return &discussion;

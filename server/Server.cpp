@@ -74,7 +74,7 @@ private:
                 return "True";
             }
             case 5: {
-
+                return "False";
             }
             case 6: {
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
@@ -92,7 +92,7 @@ private:
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
                     return "False";
                 }
-                //TODO: Data::name_to_group[query[2]].add_task();
+                Data::name_to_group[query[2]].add_task(Task(query[3], query[5], query[1], query[4]));
                 return "True";
             }
             case 9: {
@@ -153,11 +153,12 @@ public:
             throw std::runtime_error("ERROR, couldn't accept");
         }
         //TODO: while loop
-        char buffer[256];
+        char buffer[1024];
         int correctness_checker = 0;
         int corr_checker2 = 0;
         while (true) {
-            correctness_checker = read(client_socket, buffer, 3 - 1);
+            bzero(buffer, 1024);
+            correctness_checker = read(client_socket, buffer, 3);
             if (correctness_checker < 0) {
                 std::cout << "Something went wrong in reading info\n";
                 break;
@@ -168,12 +169,14 @@ public:
             number_c[2] = buffer[2];
             std::string number_s = static_cast<std::string>(number_c);
             int number_of_chars = std::stoi(number_s);
-            corr_checker2 = read(client_socket, buffer, number_of_chars - 1);
+            bzero(buffer, 3);
+            corr_checker2 = read(client_socket, buffer, number_of_chars);
             if (corr_checker2 < 0) {
                 std::cout << "Something went wrong in reading info\n";
                 break;
             }
-            std::vector<std::string> fields;
+            std::cout << static_cast<std::string>(buffer) << "\n";
+            std::vector<std::string> fields = std::vector<std::string>();
             std::string current_string;
             for (int i = 0; i < number_of_chars; ++i) {
                 if (buffer[i] == '#') {
@@ -185,7 +188,7 @@ public:
                 }
                 current_string += buffer[i];
             }
-            std::map<std::string, int> query_converter;
+            std::map<std::string, int> query_converter = std::map<std::string, int>();
             query_converter["SIGN_UP"] = 0;
             query_converter["SIGN_IN"] = 1;
             query_converter["IS_TUTOR"] = 2;

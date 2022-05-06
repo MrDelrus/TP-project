@@ -238,7 +238,7 @@ class Interface:
         del self.tasks
         del self.is_tutor
 
-    def ADD_TASK(self, login, group_name, task_name, student_name):
+    def ADD_TASK(self, login, group_name, task_name, student_name, problem):
         self.DEL_WARNINGS_IN_CREATE_TASK()
         self.is_good = True
         if task_name in self.tasks:
@@ -252,7 +252,7 @@ class Interface:
             return
         if self.is_good:
             del self.is_good
-            scripts.ADD_TASK(login, group_name, task_name, student_name)
+            scripts.ADD_TASK(login, group_name, task_name, student_name, problem)
             self.CREATE_TASK_TO_GROUP(login, group_name)
         else:
             del self.is_good
@@ -325,7 +325,7 @@ class Interface:
         self.entry_problem.place(relheight=0.2, relwidth=0.6, relx=0.2, rely=0.6)
 
         self.btn_create = tk.Button(text='Создать',
-                                        command=lambda: self.ADD_TASK(login, group_name, self.entry_task_name.get(), self.entry_student_name.get()))
+                                        command=lambda: self.ADD_TASK(login, group_name, self.entry_task_name.get(), self.entry_student_name.get(), self.entry_problem.get()))
         self.btn_create.place(relheight=0.08, relwidth=0.2, relx=0.7, rely=0.85)
 
         self.go_back = tk.Button(text='Назад', command=lambda: self.CREATE_TASK_TO_GROUP(login, group_name))
@@ -427,7 +427,6 @@ class Interface:
             self.warning_wrong_group_name.place(relheight=0.08, relwidth=0.2, relx=0.70, rely=0.7)
             return
         self.DEL_PERSON()
-        scripts.ENTER_GROUP(group_name)
         self.GET_GROUP(login, group_name)
 
     def GROUP_TO_PERSON(self, login):

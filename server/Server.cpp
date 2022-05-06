@@ -1,6 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/socket.h>
@@ -95,7 +92,7 @@ private:
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
                     return "False";
                 }
-                Data::name_to_group[query[2]].add_task();
+                //TODO: Data::name_to_group[query[2]].add_task();
                 return "True";
             }
             case 9: {
@@ -125,6 +122,7 @@ private:
                 return "True";
             }
         }
+        return "False";
     }
 public:
     Server(int main_port_c, int number_of_clients_in_listening_queue_c) {
@@ -134,7 +132,7 @@ public:
     Server(const Server& to_copy) = delete;
     ~Server() = default;
     Server& operator = (const Server& to_copy) = delete;
-    void run() {
+    void run() const {
         int main_socket_fd = socket(AF_INET, SOCK_STREAM, 0);
         if (main_socket_fd < 0) {
             throw std::runtime_error("ERROR, couldn't create socket!");

@@ -2,8 +2,15 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <chrono>
 #include <iostream>
 #include "DataHandler.cpp"
+
+using std::chrono::duration_cast;
+using std::chrono::milliseconds;
+using std::chrono::seconds;
+using std::chrono::system_clock;
+
 
 class Server {
 private:
@@ -41,7 +48,7 @@ private:
         int switch_int = map_to_switch[query[0]];
         switch (switch_int) {
             case 0: {
-                if (Data::name_to_person.count(query[2]) == 0) {
+                if (Data::name_to_person.count(query[2]) == 1) {
                     return "False";
                 }
                 Person person_to_add = Person(query[2], query[3], query[1] == "tutor" ? type::tutor : type::student);
@@ -64,7 +71,7 @@ private:
                 if (!check_if_person_exists(query[1])) {
                     return "False";
                 }
-                return Data::name_to_person[query[1]].get_groups();
+                return "Template " + Data::name_to_person[query[1]].get_groups();
             }
             case 4: {
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
@@ -145,7 +152,7 @@ public:
         if (bind_checker < 0) {
             throw std::runtime_error("ERROR, couldn't bind the socket!");
         }
-        listen(main_socket_fd, 5);
+        listen(main_socket_fd, number_of_clients_in_listening_queue);
         struct sockaddr_in cli_addr;
         socklen_t client_length = sizeof(cli_addr);
         int client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
@@ -156,8 +163,14 @@ public:
         char buffer[1024];
         int correctness_checker = 0;
         int corr_checker2 = 0;
+        long long prev_time = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
         while (true) {
             bzero(buffer, 1024);
+            long long time_now = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
+            if (time_now - prev_time > 10) {
+                prev_time = time_now;
+                DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
+            }
             correctness_checker = read(client_socket, buffer, 3);
             if (correctness_checker < 0) {
                 std::cout << "Something went wrong in reading info\n";
@@ -175,7 +188,7 @@ public:
                 std::cout << "Something went wrong in reading info\n";
                 break;
             }
-            std::cout << static_cast<std::string>(buffer) << "\n";
+            //std::cout << static_cast<std::string>(buffer) << "\n";
             std::vector<std::string> fields = std::vector<std::string>();
             std::string current_string;
             for (int i = 0; i < number_of_chars; ++i) {
@@ -188,6 +201,11 @@ public:
                 }
                 current_string += buffer[i];
             }
+            fields.push_back(current_string);
+            for (auto& field : fields) {
+                std::cout << field << " ";
+            }
+            std::cout << "\n";
             std::map<std::string, int> query_converter = std::map<std::string, int>();
             query_converter["SIGN_UP"] = 0;
             query_converter["SIGN_IN"] = 1;

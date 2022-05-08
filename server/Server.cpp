@@ -85,6 +85,7 @@ private:
             }
             case 6: {
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
+                    std::cout << query[1] << "\n";
                     return "False";
                 }
                 return Data::name_to_group[query[2]].get_students_names();
@@ -103,10 +104,10 @@ private:
                 return "True";
             }
             case 9: {
-                if (!check_if_person_exists_and_is_tutor(query[1])) {
+                if (!check_if_person_exists_and_is_tutor(query[1]) || !check_if_person_exists(query[3])) {
                     return "False";
                 }
-                Data::name_to_group[query[2]].add_student(query[3]);
+                Data::add_student_into_group(query[3], query[2]);
                 return "True";
             }
             case 10: {
@@ -119,7 +120,7 @@ private:
                 if (!check_if_person_exists(query[1])) {
                     return "False";
                 }
-                //TODO: complete this
+                return Data::name_to_group[query[2]].get_task(query[3])->get_discussion()->get_last_n_messages(5);
             }
             case 12: {
                 if (!check_if_person_exists(query[1])) {
@@ -199,6 +200,7 @@ public:
                 current_string += buffer[i];
             }
             fields.push_back(current_string);
+            std::cout << "REQUEST: ";
             for (auto& field : fields) {
                 std::cout << field << " ";
             }
@@ -218,6 +220,7 @@ public:
             query_converter["GET_LAST_5_MESSAGES"] = 11;
             query_converter["SEND_MESSAGE"] = 12;
             std::string to_send = "#" + answer_to_query(query_converter, fields);
+            std::cout << "ANSWER: " + to_send << "\n";
             send(client_socket, to_send.c_str(), to_send.size(), 0);
         }
         close(main_socket_fd);

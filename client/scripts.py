@@ -40,7 +40,7 @@ def ADD_GROUP(login, name):
     return GET_ANSWER(request)
 
 def GET_STUDENTS_IN_GROUP(login, group_name):
-    request = symbol + 'GET_STUDENT_IN_GROUP' + symbol + login + symbol + group_name
+    request = symbol + 'GET_STUDENTS_IN_GROUP' + symbol + login + symbol + group_name
     return GET_ANSWER(request)
 
 def GET_TASKS(login, group_name):

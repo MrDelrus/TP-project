@@ -56,7 +56,7 @@ private:
                 return "True";
             }
             case 1: {
-                if (!Data::name_to_person[query[1]].check_password(query[2])) {
+                if (!check_if_person_exists(query[1]) || !Data::name_to_person[query[1]].check_password(query[2])) {
                     return "False";
                 }
                 return "True";
@@ -71,7 +71,7 @@ private:
                 if (!check_if_person_exists(query[1])) {
                     return "False";
                 }
-                return "Template " + Data::name_to_person[query[1]].get_groups();
+                return Data::name_to_person[query[1]].get_groups();
             }
             case 4: {
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
@@ -177,11 +177,8 @@ public:
                 break;
             }
             char number_c[3];
-            number_c[0] = buffer[0];
-            number_c[1] = buffer[1];
-            number_c[2] = buffer[2];
-            std::string number_s = static_cast<std::string>(number_c);
-            int number_of_chars = std::stoi(number_s);
+            int number_of_chars = std::stoi(buffer);
+            std::cout << buffer << " " << number_of_chars << "\n";
             bzero(buffer, 3);
             corr_checker2 = read(client_socket, buffer, number_of_chars);
             if (corr_checker2 < 0) {
@@ -220,7 +217,7 @@ public:
             query_converter["GET_TASK_TEXT"] = 10;
             query_converter["GET_LAST_5_MESSAGES"] = 11;
             query_converter["SEND_MESSAGE"] = 12;
-            std::string to_send = answer_to_query(query_converter, fields);
+            std::string to_send = "#" + answer_to_query(query_converter, fields);
             send(client_socket, to_send.c_str(), to_send.size(), 0);
         }
         close(main_socket_fd);

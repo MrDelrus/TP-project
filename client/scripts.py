@@ -12,7 +12,12 @@ def GET_ANSWER(request):
     request = f'{l:03}' + request
     s.send(request.encode("ascii", "ignore"))
     answer = s.recv(1024)
-    return answer.decode("ascii", "ignore")
+    to_return = answer.decode("ascii", "ignore")[1:]
+    if to_return == 'True':
+        return True
+    if to_return == 'False':
+        return False
+    return to_return
 
 def SIGN_UP(type, login, password):
     request = symbol + 'SIGN_UP' + symbol + type + symbol + login + symbol + password

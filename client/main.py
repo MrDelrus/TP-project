@@ -207,7 +207,7 @@ class Interface:
         self.TASKS_RELOAD(login, group_name)
 
         self.btn_enter_task = tk.Button(text='Open',
-                                        command=lambda: self.GROUP_TO_TASK(login, group_name, self.entry_task_name.get()))
+                                         command=lambda: self.GROUP_TO_TASK(login, group_name, self.entry_task_name.get()))
         self.btn_enter_task.place(relheight=0.08, relwidth=0.2, relx=0.7, rely=0.85)
 
         self.go_back = tk.Button(text='Back', command=lambda: self.GROUP_TO_PERSON(login))
@@ -215,11 +215,11 @@ class Interface:
 
         if self.is_tutor:
             self.add_task_button = tk.Button(text='Create',
-                                             command=lambda: self.GROUP_TO_CREATE_TASK(login, group_name))
+                                              command=lambda: self.GROUP_TO_CREATE_TASK(login, group_name))
             self.add_task_button.place(relheight=0.08, relwidth=0.2, relx=0.38, rely=0.85)
 
             self.btn_add_student = tk.Button(text='Add student',
-                                             command=lambda: self.GROUP_TO_ADD_STUDENT_TO_GROUP(login, group_name))
+                                            command=lambda: self.GROUP_TO_ADD_STUDENT_TO_GROUP(login, group_name))
             self.btn_add_student.place(relheight=0.08, relwidth=0.2, relx=0.7, rely=0.4)
 
     def DEL_GROUP(self):
@@ -235,6 +235,8 @@ class Interface:
             self.btn_add_student.destroy()
         if hasattr(self, 'warning_wrong_task_name') and self.warning_wrong_task_name.winfo_exists():
             self.warning_wrong_task_name.destroy()
+        if hasattr(self, 'self.warning_wrong_group_name') and self.warning_wrong_group_name.winfo_exists():
+            self.warning_wrong_group_name.destroy()
         del self.tasks
         del self.is_tutor
 
@@ -325,7 +327,7 @@ class Interface:
         self.entry_problem.place(relheight=0.2, relwidth=0.6, relx=0.2, rely=0.6)
 
         self.btn_create = tk.Button(text='Create',
-                                    command=lambda: self.ADD_TASK(login, group_name, self.entry_task_name.get(), self.entry_student_name.get(), self.entry_problem.get()))
+                                        command=lambda: self.ADD_TASK(login, group_name, self.entry_task_name.get(), self.entry_student_name.get(), self.entry_problem.get()))
         self.btn_create.place(relheight=0.08, relwidth=0.2, relx=0.7, rely=0.85)
 
         self.go_back = tk.Button(text='Back', command=lambda: self.CREATE_TASK_TO_GROUP(login, group_name))
@@ -361,7 +363,7 @@ class Interface:
         self.entry_student_name.place(relheight=0.08, relwidth=0.2, relx=0.40, rely=0.4)
 
         self.btn_add_student = tk.Button(text='Add',
-                                         command=lambda: scripts.ADD_STUDENT_IN_GROUP(login, group_name, self.entry_student_name.get()))
+                                    command=lambda: scripts.ADD_STUDENT_IN_GROUP(login, group_name, self.entry_student_name.get()))
         self.btn_add_student.place(relheight=0.08, relwidth=0.2, relx=0.7, rely=0.85)
 
         self.go_back = tk.Button(text='Back', command=lambda: self.ADD_STUDENT_TO_GROUP_TO_GROUP(login, group_name))

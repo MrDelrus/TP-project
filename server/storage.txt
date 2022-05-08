@@ -1,13 +1,51 @@
 [
     {
+        "Masha": [
+            "Masha",
+            "masha1",
+            "student",
+            null
+        ],
+        "Petya": [
+            "Petya",
+            "pet1",
+            "student",
+            null
+        ],
         "Sergey": [
             "Sergey",
             "1234",
             "tutor",
             [
-                ""
+                "",
+                "Math",
+                "\\"
             ]
+        ],
+        "Sergey1": [
+            "Sergey1",
+            "1234",
+            "tutor",
+            null
         ]
     },
-    null
+    {
+        "Math": [
+            "",
+            "",
+            [
+                "Masha",
+                "Petya"
+            ],
+            null
+        ],
+        "\\": [
+            "",
+            "",
+            [
+                "Ser"
+            ],
+            null
+        ]
+    }
 ]

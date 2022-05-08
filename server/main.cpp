@@ -107,7 +107,7 @@ void group_check() {
 }
 
 int main() {
-    DataHandler::load_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
+    DataHandler::load_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
 //    Person Petya1 = Person("Petya1", "1234", type::student);
 //    Person Vasya1 = Person("Vasya1", "7622", type::student);
 //    Data::name_to_person["Petya1"] = Petya1;
@@ -115,7 +115,7 @@ int main() {
 //    Vasya1.add_group("2a", 5674);
     Server main_server (8080, 5);
     main_server.run();
-    DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/storage.txt");
+    DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
     return 0;
 }
 

@@ -16,9 +16,8 @@ public:
         password = "";
         role = type::student;
     }
-    Person(std::string name, std::string  password, const type& role) : password(std::move(password)), role(role) {
+    Person(std::string name_c, std::string  password, const type& role) : name(std::move(name_c)), password(std::move(password)), role(role) {
         //name_to_id_of_groups = std::map<std::string, long long>();
-        name = std::move(name);
         groups_names = std::set<std::string>();
     }
     Person(const Person& copy) = default;

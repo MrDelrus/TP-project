@@ -2,8 +2,15 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <chrono>
 #include <iostream>
 #include "DataHandler.cpp"
+
+using std::chrono::duration_cast;
+using std::chrono::milliseconds;
+using std::chrono::seconds;
+using std::chrono::system_clock;
+
 
 class Server {
 private:
@@ -41,7 +48,7 @@ private:
         int switch_int = map_to_switch[query[0]];
         switch (switch_int) {
             case 0: {
-                if (Data::name_to_person.count(query[2]) == 0) {
+                if (Data::name_to_person.count(query[2]) == 1) {
                     return "False";
                 }
                 Person person_to_add = Person(query[2], query[3], query[1] == "tutor" ? type::tutor : type::student);
@@ -49,7 +56,7 @@ private:
                 return "True";
             }
             case 1: {
-                if (!Data::name_to_person[query[1]].check_password(query[2])) {
+                if (!check_if_person_exists(query[1]) || !Data::name_to_person[query[1]].check_password(query[2])) {
                     return "False";
                 }
                 return "True";
@@ -74,10 +81,11 @@ private:
                 return "True";
             }
             case 5: {
-
+                return "False";
             }
             case 6: {
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
+                    std::cout << query[1] << "\n";
                     return "False";
                 }
                 return Data::name_to_group[query[2]].get_students_names();
@@ -92,14 +100,14 @@ private:
                 if (!check_if_person_exists_and_is_tutor(query[1])) {
                     return "False";
                 }
-                //TODO: Data::name_to_group[query[2]].add_task();
+                Data::name_to_group[query[2]].add_task(Task(query[3], query[5], query[1], query[4]));
                 return "True";
             }
             case 9: {
-                if (!check_if_person_exists_and_is_tutor(query[1])) {
+                if (!check_if_person_exists_and_is_tutor(query[1]) || !check_if_person_exists(query[3])) {
                     return "False";
                 }
-                Data::name_to_group[query[2]].add_student(query[3]);
+                Data::add_student_into_group(query[3], query[2]);
                 return "True";
             }
             case 10: {
@@ -112,7 +120,7 @@ private:
                 if (!check_if_person_exists(query[1])) {
                     return "False";
                 }
-                //TODO: complete this
+                return Data::name_to_group[query[2]].get_task(query[3])->get_discussion()->get_last_n_messages(5);
             }
             case 12: {
                 if (!check_if_person_exists(query[1])) {
@@ -145,7 +153,7 @@ public:
         if (bind_checker < 0) {
             throw std::runtime_error("ERROR, couldn't bind the socket!");
         }
-        listen(main_socket_fd, 5);
+        listen(main_socket_fd, number_of_clients_in_listening_queue);
         struct sockaddr_in cli_addr;
         socklen_t client_length = sizeof(cli_addr);
         int client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
@@ -153,27 +161,33 @@ public:
             throw std::runtime_error("ERROR, couldn't accept");
         }
         //TODO: while loop
-        char buffer[256];
+        char buffer[1024];
         int correctness_checker = 0;
         int corr_checker2 = 0;
+        long long prev_time = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
         while (true) {
-            correctness_checker = read(client_socket, buffer, 3 - 1);
+            bzero(buffer, 1024);
+            long long time_now = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
+            if (time_now - prev_time > 10) {
+                prev_time = time_now;
+                DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
+            }
+            correctness_checker = read(client_socket, buffer, 3);
             if (correctness_checker < 0) {
                 std::cout << "Something went wrong in reading info\n";
                 break;
             }
             char number_c[3];
-            number_c[0] = buffer[0];
-            number_c[1] = buffer[1];
-            number_c[2] = buffer[2];
-            std::string number_s = static_cast<std::string>(number_c);
-            int number_of_chars = std::stoi(number_s);
-            corr_checker2 = read(client_socket, buffer, number_of_chars - 1);
+            int number_of_chars = std::stoi(buffer);
+            std::cout << buffer << " " << number_of_chars << "\n";
+            bzero(buffer, 3);
+            corr_checker2 = read(client_socket, buffer, number_of_chars);
             if (corr_checker2 < 0) {
                 std::cout << "Something went wrong in reading info\n";
                 break;
             }
-            std::vector<std::string> fields;
+            //std::cout << static_cast<std::string>(buffer) << "\n";
+            std::vector<std::string> fields = std::vector<std::string>();
             std::string current_string;
             for (int i = 0; i < number_of_chars; ++i) {
                 if (buffer[i] == '#') {
@@ -185,7 +199,13 @@ public:
                 }
                 current_string += buffer[i];
             }
-            std::map<std::string, int> query_converter;
+            fields.push_back(current_string);
+            std::cout << "REQUEST: ";
+            for (auto& field : fields) {
+                std::cout << field << " ";
+            }
+            std::cout << "\n";
+            std::map<std::string, int> query_converter = std::map<std::string, int>();
             query_converter["SIGN_UP"] = 0;
             query_converter["SIGN_IN"] = 1;
             query_converter["IS_TUTOR"] = 2;
@@ -199,7 +219,8 @@ public:
             query_converter["GET_TASK_TEXT"] = 10;
             query_converter["GET_LAST_5_MESSAGES"] = 11;
             query_converter["SEND_MESSAGE"] = 12;
-            std::string to_send = answer_to_query(query_converter, fields);
+            std::string to_send = "#" + answer_to_query(query_converter, fields);
+            std::cout << "ANSWER: " + to_send << "\n";
             send(client_socket, to_send.c_str(), to_send.size(), 0);
         }
         close(main_socket_fd);

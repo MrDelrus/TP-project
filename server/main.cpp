@@ -106,16 +106,35 @@ void group_check() {
     std::cout << "Json view:\n" << group_json << "\n";
 }
 
-int main() {
-    DataHandler::load_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
+std::string get_current_path() {
+    std::string current_path = static_cast<std::string>(std::filesystem::current_path());
+    if (current_path[current_path.size() - 1] == 'g') {
+        std::cout << "It's better not to use CLion and execute it with the terminal\n";
+        current_path = current_path.substr(0, current_path.size() - 18);
+    }
+    return current_path;
+}
+
+int main(int argc, char* argv[]) {
+    int port = 8080;
+    if (argc < 2) {
+        std::cout << "No arguments, so it'll take port 8080\n";
+    }
+    else {
+        port = std::stoi(argv[1]);
+    }
+    auto current_path = get_current_path();
+    std::cout << "Current path: " + current_path << "\n";
+    std::string storage_path = current_path + "/storage.txt";
+    DataHandler::load_everything(storage_path);
 //    Person Petya1 = Person("Petya1", "1234", type::student);
 //    Person Vasya1 = Person("Vasya1", "7622", type::student);
 //    Data::name_to_person["Petya1"] = Petya1;
 //    Data::name_to_person["Vasya1"] = Vasya1;
 //    Vasya1.add_group("2a", 5674);
-    Server main_server (8080, 5);
+    Server main_server (port, 5);
     main_server.run();
-    DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
+    DataHandler::save_everything(storage_path);
     return 0;
 }
 

@@ -1,0 +1,71 @@
+[
+    {
+        "Ilya": [
+            "Ilya",
+            "ilya1",
+            "student",
+            [
+                "Math"
+            ]
+        ],
+        "Masha": [
+            "Masha",
+            "mas1",
+            "student",
+            [
+                "Math"
+            ]
+        ],
+        "Sergey": [
+            "Sergey",
+            "1234",
+            "tutor",
+            [
+                "Math",
+                "NewGroup"
+            ]
+        ]
+    },
+    {
+        "Math": [
+            "",
+            "",
+            [
+                "Ilya",
+                "Masha"
+            ],
+            {
+                "task1": [
+                    true,
+                    "task1",
+                    "Given a and b. Find a + b",
+                    "Sergey",
+                    "Masha",
+                    [
+                        "",
+                        "Sergey: hello!\n\nSergey: how is it going?\n\nMasha: fine, thanks, i managed to do this! :)\n\nSergey: Very well\n\n",
+                        [],
+                        [
+                            [
+                                "Sergey",
+                                "hello!"
+                            ],
+                            [
+                                "Sergey",
+                                "how is it going?"
+                            ],
+                            [
+                                "Masha",
+                                "fine, thanks, i managed to do this! :)"
+                            ],
+                            [
+                                "Sergey",
+                                "Very well"
+                            ]
+                        ]
+                    ]
+                ]
+            }
+        ]
+    }
+]

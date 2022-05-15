@@ -1,0 +1,150 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-f5ebdc15457944623624.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "TP_project",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "TP_project::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-TP_project-Debug-392a6479a4e76a797d40.json",
+					"name" : "TP_project",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "chat_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-chat_lib-Debug-3ae1c677b6455d219e4c.json",
+					"name" : "chat_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "data_handler::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-data_handler-Debug-8c8cfc54fd01c75527ce.json",
+					"name" : "data_handler",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "data_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-data_lib-Debug-3bf38ee59999d00c3c5c.json",
+					"name" : "data_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "group_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-group_lib-Debug-7312d29790701600298c.json",
+					"name" : "group_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "json::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-json-Debug-955454494544b111c093.json",
+					"name" : "json",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "json_parser::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-json_parser-Debug-1a29c5646d4bfada9e72.json",
+					"name" : "json_parser",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "main_header::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-main_header-Debug-12101edb94d85a8c0d51.json",
+					"name" : "main_header",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "person_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-person_lib-Debug-6a7ebc576ab196eb779e.json",
+					"name" : "person_lib",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "server::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-server-Debug-e86a16d0e259ebd36738.json",
+					"name" : "server",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "task_lib::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-task_lib-Debug-5867c4340d6502b7e096.json",
+					"name" : "task_lib",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-project/server/cmake-build-debug",
+		"source" : "/home/ilya/MIPT/C++/CLionProjects/TP-project/TP-project/server"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

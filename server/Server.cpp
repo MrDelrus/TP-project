@@ -5,6 +5,7 @@
 #include <chrono>
 #include <iostream>
 #include "DataHandler.cpp"
+#include <filesystem>
 
 using std::chrono::duration_cast;
 using std::chrono::milliseconds;
@@ -29,6 +30,13 @@ private:
 //    query_converter["GET_TASK_TEXT"] = 10;
 //    query_converter["GET_LAST_5_MESSAGES"] = 11;
 //    query_converter["SEND_MESSAGE"] = 12;
+    static std::string get_current_path() {
+        std::string current_path = static_cast<std::string>(std::filesystem::current_path());
+        if (current_path[current_path.size() - 1] == 'g') {
+            current_path = current_path.substr(0, current_path.size() - 18);
+        }
+        return current_path;
+    }
 
     static bool check_if_person_exists(const std::string& name) {
         if (Data::name_to_person.count(name) == 0) {
@@ -154,30 +162,33 @@ public:
             throw std::runtime_error("ERROR, couldn't bind the socket!");
         }
         listen(main_socket_fd, number_of_clients_in_listening_queue);
-        struct sockaddr_in cli_addr;
-        socklen_t client_length = sizeof(cli_addr);
-        int client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
-        if (client_socket < 0) {
-            throw std::runtime_error("ERROR, couldn't accept");
-        }
         //TODO: while loop
         char buffer[1024];
         int correctness_checker = 0;
         int corr_checker2 = 0;
+        struct sockaddr_in cli_addr;
+        socklen_t client_length = sizeof(cli_addr);
+        int client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
         long long prev_time = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
+        if (client_socket < 0) {
+            throw std::runtime_error("ERROR, couldn't accept");
+        }
         while (true) {
             bzero(buffer, 1024);
             long long time_now = duration_cast<seconds>(system_clock::now().time_since_epoch()).count();
-            if (time_now - prev_time > 10) {
+            if (time_now - prev_time > 3) {
                 prev_time = time_now;
-                DataHandler::save_everything("/home/ilya/MIPT/C++/CLionProjects/TP-project/newtp/TP-project/server/storage.txt");
+                std::string current_path = get_current_path();
+                DataHandler::save_everything(current_path + "/storage.txt");
             }
             correctness_checker = read(client_socket, buffer, 3);
             if (correctness_checker < 0) {
                 std::cout << "Something went wrong in reading info\n";
                 break;
             }
-            char number_c[3];
+            if (correctness_checker == 0) {
+                client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
+            }
             int number_of_chars = std::stoi(buffer);
             std::cout << buffer << " " << number_of_chars << "\n";
             bzero(buffer, 3);
@@ -222,8 +233,10 @@ public:
             std::string to_send = "#" + answer_to_query(query_converter, fields);
             std::cout << "ANSWER: " + to_send << "\n";
             send(client_socket, to_send.c_str(), to_send.size(), 0);
+            close(client_socket);
+            client_socket = accept(main_socket_fd, (struct sockaddr*)&cli_addr, &client_length);
         }
-        close(main_socket_fd);
         close(client_socket);
+        close(main_socket_fd);
     }
 };

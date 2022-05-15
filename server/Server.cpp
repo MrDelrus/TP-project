@@ -13,31 +13,8 @@ using std::chrono::seconds;
 using std::chrono::system_clock;
 
 
-class Server {
-private:
-    int main_port;
-    int number_of_clients_in_listening_queue;
-//    query_converter["SIGN_UP"] = 0;
-//    query_converter["SIGN_IN"] = 1;
-//    query_converter["IS_TUTOR"] = 2;
-//    query_converter["GET_GROUPS"] = 3;
-//    query_converter["ADD_GROUP"] = 4;
-//    query_converter["ENTER_GROUP"] = 5;
-//    query_converter["GET_STUDENTS_IN_GROUP"] = 6;
-//    query_converter["GET_TASKS"] = 7;
-//    query_converter["ADD_TASK"] = 8;
-//    query_converter["ADD_STUDENT_IN_GROUP"] = 9;
-//    query_converter["GET_TASK_TEXT"] = 10;
-//    query_converter["GET_LAST_5_MESSAGES"] = 11;
-//    query_converter["SEND_MESSAGE"] = 12;
-    static std::string get_current_path() {
-        std::string current_path = static_cast<std::string>(std::filesystem::current_path());
-        if (current_path[current_path.size() - 1] == 'g') {
-            current_path = current_path.substr(0, current_path.size() - 18);
-        }
-        return current_path;
-    }
-
+class QueueHandler {
+public:
     static bool check_if_person_exists(const std::string& name) {
         if (Data::name_to_person.count(name) == 0) {
             return false;
@@ -140,6 +117,32 @@ private:
         }
         return "False";
     }
+};
+
+class Server {
+private:
+    int main_port;
+    int number_of_clients_in_listening_queue;
+//    query_converter["SIGN_UP"] = 0;
+//    query_converter["SIGN_IN"] = 1;
+//    query_converter["IS_TUTOR"] = 2;
+//    query_converter["GET_GROUPS"] = 3;
+//    query_converter["ADD_GROUP"] = 4;
+//    query_converter["ENTER_GROUP"] = 5;
+//    query_converter["GET_STUDENTS_IN_GROUP"] = 6;
+//    query_converter["GET_TASKS"] = 7;
+//    query_converter["ADD_TASK"] = 8;
+//    query_converter["ADD_STUDENT_IN_GROUP"] = 9;
+//    query_converter["GET_TASK_TEXT"] = 10;
+//    query_converter["GET_LAST_5_MESSAGES"] = 11;
+//    query_converter["SEND_MESSAGE"] = 12;
+    static std::string get_current_path() {
+        std::string current_path = static_cast<std::string>(std::filesystem::current_path());
+        if (current_path[current_path.size() - 1] == 'g') {
+            current_path = current_path.substr(0, current_path.size() - 18);
+        }
+        return current_path;
+    }
 public:
     Server(int main_port_c, int number_of_clients_in_listening_queue_c) {
         main_port = main_port_c;
@@ -230,7 +233,7 @@ public:
             query_converter["GET_TASK_TEXT"] = 10;
             query_converter["GET_LAST_5_MESSAGES"] = 11;
             query_converter["SEND_MESSAGE"] = 12;
-            std::string to_send = "#" + answer_to_query(query_converter, fields);
+            std::string to_send = "#" + QueueHandler::answer_to_query(query_converter, fields);
             std::cout << "ANSWER: " + to_send << "\n";
             send(client_socket, to_send.c_str(), to_send.size(), 0);
             close(client_socket);

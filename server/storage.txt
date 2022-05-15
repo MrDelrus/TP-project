@@ -16,6 +16,14 @@
                 "Math"
             ]
         ],
+        "Mira": [
+            "Mira",
+            "mira1",
+            "student",
+            [
+                "Math"
+            ]
+        ],
         "Sergey": [
             "Sergey",
             "1234",
@@ -32,7 +40,8 @@
             "",
             [
                 "Ilya",
-                "Masha"
+                "Masha",
+                "Mira"
             ],
             {
                 "task1": [
@@ -43,28 +52,75 @@
                     "Masha",
                     [
                         "",
-                        "Sergey: hello!\n\nSergey: how is it going?\n\nMasha: fine, thanks, i managed to do this! :)\n\nSergey: Very well\n\nSergey: Hi again!)\n\n",
+                        "Sergey: hello!\n\nSergey: how is it going?\n\nMasha: fine, thanks, i managed to do this! :)\n\nSergey: Very well\n\nSergey: Hi again!)\n\nSergey: HI\n\nMasha: HI\n\n",
                         [],
                         [
                             [
-                                "Sergey",
-                                "hello!"
+                                "hello!",
+                                "Sergey"
+                            ],
+                            [
+                                "how is it going?",
+                                "Sergey"
+                            ],
+                            [
+                                "fine, thanks, i managed to do this! :)",
+                                "Masha"
+                            ],
+                            [
+                                "Very well",
+                                "Sergey"
+                            ],
+                            [
+                                "Hi again!)",
+                                "Sergey"
                             ],
                             [
                                 "Sergey",
-                                "how is it going?"
+                                "HI"
                             ],
                             [
                                 "Masha",
-                                "fine, thanks, i managed to do this! :)"
+                                "HI"
+                            ]
+                        ]
+                    ]
+                ],
+                "task2": [
+                    true,
+                    "task2",
+                    "Several currency exchange points are working in our city. Let us suppose that each point specializes in two particular currencies and performs exchange operations only with these currencies. There can be several points specializing in the same pair of currencies.",
+                    "Sergey",
+                    "Mira",
+                    [
+                        "",
+                        "",
+                        [],
+                        null
+                    ]
+                ],
+                "task_with_Mira": [
+                    true,
+                    "task_with_Mira",
+                    "Given a, b and c. FInd a + b + c",
+                    "Sergey",
+                    "Mira",
+                    [
+                        "",
+                        "Sergey: Hi, it's your tutor\n\nMira: HI, it's Mira\n\nMira: HI, it's Mira\n\n",
+                        [],
+                        [
+                            [
+                                "Hi, it's your tutor",
+                                "Sergey"
                             ],
                             [
-                                "Sergey",
-                                "Very well"
+                                "HI, it's Mira",
+                                "Mira"
                             ],
                             [
-                                "Sergey",
-                                "Hi again!)"
+                                "HI, it's Mira",
+                                "Mira"
                             ]
                         ]
                     ]

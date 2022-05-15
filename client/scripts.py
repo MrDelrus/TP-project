@@ -1,23 +1,40 @@
 import socket
+import sys
 
 symbol = '#'
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
 host = '127.0.0.1'
 port = 8080
-s.connect((host, port))
+if len(sys.argv) > 1:
+    port = int(sys.argv[1])
+else:
+    print("No default port set, so 8080 has been chosen")
+
 
 def GET_ANSWER(request):
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    s.connect((host, port))
     l = len(request)
     request = f'{l:03}' + request
+    ascii_request = request.encode("ascii", "ignore")
+    print("REQUEST: " + ascii(request))
     s.send(request.encode("ascii", "ignore"))
     answer = s.recv(1024)
     to_return = answer.decode("ascii", "ignore")[1:]
+    print("ANSWER: " + to_return)
     if to_return == 'True':
+        s.shutdown(socket.SHUT_RDWR)
+        s.close()
         return True
     if to_return == 'False':
+        s.shutdown(socket.SHUT_RDWR)
+        s.close()
         return False
+    s.shutdown(socket.SHUT_RDWR)
+    s.close()
     return to_return
+
 
 def SIGN_UP(type, login, password):
     request = symbol + 'SIGN_UP' + symbol + type + symbol + login + symbol + password

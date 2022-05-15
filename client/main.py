@@ -11,7 +11,7 @@ class Interface:
         root.title("<<Название проекта>>")
         root.geometry('1000x600+500+200')
         root.resizable(False, False)
-        # root.configure(bg='yellow')
+        root['bg'] = '#00FFFF'
         self.project_name = tk.Label(text='<<Название проекта>>')
         self.project_name.place(relheight=0.08, relwidth=0.2, relx=0.1, rely=0.1)
         self.GET_MAIN()
@@ -278,9 +278,24 @@ class Interface:
         self.task_name.place(relheight=0.08, relwidth=0.2, relx=0.4, rely=0.2)
 
         self.task_text = scripts.GET_TASK_TEXT(login, group_name, task_name)
+        def reformat_text(text):
+            words = (' '.join(text.split('\n'))).split(' ')
+            L = 70
+            #words = text.split(' ')
+            new_text = ''
+            n = 0
+            for w in words:
+                if n + len(w) > L:
+                    new_text += '\n' + w
+                    n = len(w)
+                else:
+                    new_text += ' ' + w
+                    n += len(w) + 1
+            return new_text
 
+        self.task_text=reformat_text(self.task_text)
         self.label_task_text = tk.Label(text=self.task_text)
-        self.label_task_text.place(relheight=0.08, relwidth=0.2, relx=0.4, rely=0.4)
+        self.label_task_text.place(relheight=0.4, relwidth=0.6, relx=0.2, rely=0.4)
 
         self.btn_enter_chat = tk.Button(text='Open the chat',
                                         command=lambda: self.TASK_TO_CHAT(login, group_name, task_name))
